@@ -86,7 +86,7 @@ export default function HeroSection() {
         .stat-item:nth-child(3) { animation-delay: 1.9s; }
       `}</style>
 
-      <section className="relative h-[calc(100vh-112px)] w-full overflow-hidden flex flex-col justify-between font-sans pt-8 md:pt-12 pb-6 md:pb-10">
+      <section className="relative h-[calc(100vh-112px)] w-full overflow-hidden flex flex-col justify-center font-sans pt-8 md:pt-12 pb-6 md:pb-10">
         {/* ── BACKGROUND VIDEO ── */}
         <video
           ref={videoRef}
@@ -130,7 +130,6 @@ export default function HeroSection() {
         {/* ── HERO CONTENT ── */}
         <div className="relative z-10 w-full max-w-[1280px] mx-auto px-8 md:px-16 mt-2 md:mt-0">
           <div className="max-w-[680px]">
-
             {/* Badge */}
             {/* <div className="hero-badge flex items-center gap-3 mb-6">
               <span
@@ -155,10 +154,10 @@ export default function HeroSection() {
               Start Your Business
               <br />
               <span
-                className="italic"
+                className=""
                 style={{ color: "rgba(255,255,255,0.92)" }}
               >
-                Journey In Dubai
+                <span className="text-red-500">Journey</span> In Dubai
               </span>
             </h1>
 
@@ -167,8 +166,8 @@ export default function HeroSection() {
               className="hero-p text-[18px] leading-[1.8] mb-9"
               style={{ color: "rgba(255,255,255,0.78)" }}
             >
-              Business setup, company formation, VAT, compliance and
-              corporate services for entrepreneurs and global investors.
+              Business setup, company formation, VAT, compliance and corporate
+              services for entrepreneurs and global investors.
             </p>
 
             {/* ── STATS BAR ── */}
@@ -203,7 +202,16 @@ export default function HeroSection() {
                 to="/contact"
                 className="btn-primary flex items-center justify-center gap-[10px] h-[58px] px-8 bg-[#d7193f] text-white font-bold text-[14px] tracking-[0.07em] uppercase rounded-sm cursor-pointer border-none no-underline"
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
                   <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
                 </svg>
                 Get Free Consultation
@@ -214,17 +222,24 @@ export default function HeroSection() {
                 className="btn-outline flex items-center gap-[10px] h-[58px] px-8 bg-transparent text-white font-semibold text-[14px] tracking-[0.07em] uppercase rounded-sm cursor-pointer"
                 style={{ border: "1px solid rgba(255,255,255,0.28)" }}
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
                 </svg>
                 Explore Services
               </Link>
             </div>
-
           </div>
         </div>
-
-
 
         {/* ── SCROLL INDICATOR ── */}
         <div className="hero-scroll absolute right-8 bottom-10 z-10 flex flex-col items-center gap-2">

@@ -97,7 +97,7 @@ function StatCard({ number, label, index, visible }) {
       <div
         className="font-bold leading-none mb-2 text-white"
         style={{
-          fontFamily: "'Cormorant Garamond', Georgia, serif",
+          fontFamily: "'Outfit', sans-serif",
           fontSize: "clamp(30px, 3.5vw, 44px)",
         }}
       >
@@ -137,7 +137,7 @@ function FeatureCard({ icon: Icon, title, description, index }) {
         </div>
         <h4
           className="text-white font-bold text-[16px] leading-[1.3] group-hover:text-[#e8718a] transition-colors duration-200"
-          style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+          style={{ fontFamily: "'Outfit', sans-serif" }}
         >
           {title}
         </h4>
@@ -148,7 +148,7 @@ function FeatureCard({ icon: Icon, title, description, index }) {
         className="text-[13.5px] leading-[1.8]"
         style={{
           color: "rgba(255,255,255,0.5)",
-          fontFamily: "'Nunito Sans', sans-serif",
+          fontFamily: "'Outfit', sans-serif",
         }}
       >
         {description}
@@ -182,7 +182,7 @@ export default function WhyChooseUs() {
         className="relative py-24 overflow-hidden"
         style={{
           background: "#0a0a0a",
-          fontFamily: "'Nunito Sans', sans-serif",
+          fontFamily: "'Outfit', sans-serif",
         }}
       >
         {/* Subtle dot grid */}
@@ -229,7 +229,7 @@ export default function WhyChooseUs() {
               <h2
                 className="text-white font-bold leading-[1.15] mb-5"
                 style={{
-                  fontFamily: "'Cormorant Garamond', Georgia, serif",
+                  fontFamily: "'Outfit', sans-serif",
                   fontSize: "clamp(30px, 4vw, 48px)",
                 }}
               >
@@ -302,7 +302,7 @@ export default function WhyChooseUs() {
                   <div
                     className="text-[72px] leading-none text-[#d7193f] mb-2 opacity-30 select-none"
                     style={{
-                      fontFamily: "'Cormorant Garamond', Georgia, serif",
+                      fontFamily: "'Outfit', sans-serif",
                     }}
                   >
                     "
@@ -310,7 +310,7 @@ export default function WhyChooseUs() {
                   <p
                     className="text-white text-[16px] leading-[1.85] mb-6 font-medium"
                     style={{
-                      fontFamily: "'Cormorant Garamond', Georgia, serif",
+                      fontFamily: "'Outfit', sans-serif",
                       fontSize: "clamp(15px, 1.4vw, 18px)",
                     }}
                   >

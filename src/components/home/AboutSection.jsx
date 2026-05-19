@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { RiBuildingLine } from "react-icons/ri";
 import { HiOutlineGlobeAlt } from "react-icons/hi";
-import { TbShieldCheck } from "react-icons/tb";
-import { MdOutlineWorkspacePremium } from "react-icons/md";
+import { TbShieldCheck, TbCertificate, TbClock, TbUsers, TbRocket, TbStar } from "react-icons/tb";
+import { MdOutlineWorkspacePremium, MdOutlineEmojiEvents } from "react-icons/md";
 import { FaHandshake } from "react-icons/fa6";
+import {  LuArrowRight, LuPhone, LuMessageCircle } from "react-icons/lu";
 
 const useCountUp = (target, duration = 2000, start = false) => {
   const [count, setCount] = useState(0);
@@ -33,15 +34,19 @@ const StatItem = ({ value, label, index, inView }) => {
   const animated = useCountUp(value, 1800 + index * 200, inView);
   return (
     <div
-      className="stat-item"
+      className="flex flex-col gap-1 transition-all duration-600"
       style={{
         opacity: inView ? 1 : 0,
         transform: inView ? "translateY(0)" : "translateY(20px)",
         transition: `all 0.6s cubic-bezier(0.22,1,0.36,1) ${0.1 + index * 0.12}s`,
       }}
     >
-      <span className="stat-value">{animated || value}</span>
-      <span className="stat-label">{label}</span>
+      <span className="text-3xl md:text-4xl font-bold text-[#d7193f] leading-none">
+        {animated || value}
+      </span>
+      <span className="text-[11px] text-gray-500 uppercase tracking-wide">
+        {label}
+      </span>
     </div>
   );
 };
@@ -81,615 +86,210 @@ export default function AboutSection() {
   }, []);
 
   return (
-    <>
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap');
+    <section ref={sectionRef} className="relative bg-gradient-to-br from-[#fef8f9] via-white to-[#fff5f6] py-20 md:py-28 overflow-hidden font-['Inter',sans-serif]">
+      {/* Background Decorations */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-[10%] w-[300px] h-[300px] bg-[#d7193f]/5 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-0 right-[5%] w-[400px] h-[400px] bg-[#e8718a]/5 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(215,25,63,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(215,25,63,0.02)_1px,transparent_1px)] bg-[size:40px_40px]" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#d7193f]/[0.03] rounded-full blur-3xl" />
+      </div>
 
-        :root {
-          --gold: #C9A84C;
-          --gold-light: #E8C97A;
-          --gold-dim: rgba(201,168,76,0.15);
-          --red: #C0392B;
-          --black: #0A0A0A;
-          --off-white: #F7F5F0;
-          --gray-text: #6B6B6B;
-          --border: rgba(201,168,76,0.2);
-        }
-
-        .about-section {
-          font-family: 'DM Sans', sans-serif;
-          background: #F9F8F5;
-          padding: 100px 0;
-          overflow: hidden;
-          position: relative;
-        }
-
-        .about-section::before {
-          content: '';
-          position: absolute;
-          top: 0; left: 0; right: 0; bottom: 0;
-          background: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(201,168,76,0.04) 0%, transparent 70%);
-          pointer-events: none;
-        }
-
-        .about-container {
-          max-width: 1260px;
-          margin: 0 auto;
-          padding: 0 40px;
-        }
-
-        /* ── GRID ── */
-        .about-grid {
-          display: grid;
-          grid-template-columns: 1fr 1.1fr;
-          gap: 80px;
-          align-items: start;
-        }
-
-        /* ── LEFT ── */
-        .left-col { position: relative; }
-
-        .image-wrapper {
-          position: relative;
-          border-radius: 24px;
-          overflow: hidden;
-          aspect-ratio: 4/5;
-          background: linear-gradient(145deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
-          box-shadow: 0 40px 80px rgba(0,0,0,0.18), 0 0 0 1px var(--border);
-        }
-
-        .image-wrapper img {
-          width: 100%; height: 100%;
-          object-fit: cover;
-          display: block;
-          mix-blend-mode: luminosity;
-          opacity: 0.85;
-        }
-
-        .image-overlay {
-          position: absolute; inset: 0;
-          background: linear-gradient(
-            160deg,
-            rgba(10,10,10,0.15) 0%,
-            rgba(201,168,76,0.08) 50%,
-            rgba(10,10,10,0.55) 100%
-          );
-        }
-
-        .image-label {
-          position: absolute;
-          bottom: 28px; left: 28px;
-          display: flex; align-items: center; gap: 10px;
-        }
-        .image-label-icon {
-          width: 42px; height: 42px;
-          background: var(--gold);
-          border-radius: 12px;
-          display: flex; align-items: center; justify-content: center;
-          color: #000; font-size: 20px;
-          flex-shrink: 0;
-        }
-        .image-label-text { color: #fff; }
-        .image-label-text span { display: block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.7; }
-        .image-label-text strong { font-size: 15px; font-weight: 600; }
-
-        /* floating stats card */
-        .stats-card {
-          position: absolute;
-          bottom: -36px;
-          right: -32px;
-          background: #0A0A0A;
-          border: 1px solid rgba(192,57,43,0.25);
-          border-radius: 20px;
-          padding: 28px 24px;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 24px 32px;
-          min-width: 300px;
-          box-shadow: 0 24px 60px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.04);
-          z-index: 10;
-        }
-
-        .stat-item { display: flex; flex-direction: column; gap: 4px; }
-        .stat-value {
-          font-family: 'Cormorant Garamond', serif;
-          font-size: 30px;
-          font-weight: 700;
-          color: var(--gold);
-          line-height: 1;
-        }
-        .stat-label {
-          font-size: 10.5px;
-          color: rgba(255,255,255,0.5);
-          letter-spacing: 0.04em;
-          line-height: 1.4;
-        }
-
-        /* ── RIGHT ── */
-        .right-col { padding-top: 10px; }
-
-        .section-badge {
-          display: inline-flex; align-items: center; gap: 8px;
-          background: var(--gold-dim);
-          border: 1px solid var(--border);
-          border-radius: 100px;
-          padding: 6px 16px 6px 10px;
-          margin-bottom: 24px;
-          opacity: 0;
-          transform: translateY(12px);
-          transition: all 0.6s cubic-bezier(0.22,1,0.36,1) 0.1s;
-        }
-        .section-badge.visible { opacity: 1; transform: translateY(0); }
-        .badge-dot {
-          width: 6px; height: 6px;
-          background: var(--gold);
-          border-radius: 50%;
-          animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-          0%,100% { opacity: 1; transform: scale(1); }
-          50% { opacity: 0.5; transform: scale(1.4); }
-        }
-        .badge-text {
-          font-size: 11px;
-          font-weight: 600;
-          letter-spacing: 0.16em;
-          text-transform: uppercase;
-          color: var(--gold);
-        }
-
-        .main-heading {
-          font-family: 'Cormorant Garamond', serif;
-          font-size: clamp(34px, 3.5vw, 50px);
-          font-weight: 700;
-          color: var(--black);
-          line-height: 1.15;
-          margin: 0 0 24px;
-          opacity: 0;
-          transform: translateY(16px);
-          transition: all 0.7s cubic-bezier(0.22,1,0.36,1) 0.2s;
-        }
-        .main-heading.visible { opacity: 1; transform: translateY(0); }
-        .heading-accent { color: var(--red); }
-
-        .main-desc {
-          font-size: 15.5px;
-          color: var(--gray-text);
-          line-height: 1.8;
-          margin-bottom: 16px;
-          opacity: 0;
-          transform: translateY(12px);
-          transition: all 0.7s cubic-bezier(0.22,1,0.36,1) 0.3s;
-        }
-        .main-desc.visible { opacity: 1; transform: translateY(0); }
-
-        /* highlights */
-        .highlights {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 12px;
-          margin: 28px 0 32px;
-          opacity: 0;
-          transform: translateY(12px);
-          transition: all 0.7s cubic-bezier(0.22,1,0.36,1) 0.45s;
-        }
-        .highlights.visible { opacity: 1; transform: translateY(0); }
-
-        .highlight-item {
-          display: flex; align-items: center; gap: 10px;
-          padding: 12px 16px;
-          background: #fff;
-          border: 1px solid rgba(0,0,0,0.06);
-          border-radius: 12px;
-          transition: all 0.3s ease;
-          cursor: default;
-        }
-        .highlight-item:hover {
-          border-color: var(--gold);
-          background: var(--gold-dim);
-          transform: translateY(-2px);
-          box-shadow: 0 8px 24px rgba(201,168,76,0.1);
-        }
-        .highlight-icon {
-          width: 32px; height: 32px;
-          background: linear-gradient(135deg, var(--gold), var(--gold-light));
-          border-radius: 8px;
-          display: flex; align-items: center; justify-content: center;
-          color: #000; font-size: 15px;
-          flex-shrink: 0;
-        }
-        .highlight-text {
-          font-size: 12.5px;
-          font-weight: 500;
-          color: #2a2a2a;
-          line-height: 1.35;
-        }
-
-        /* vision/mission */
-        .vm-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 16px;
-          margin-bottom: 36px;
-          opacity: 0;
-          transform: translateY(12px);
-          transition: all 0.7s cubic-bezier(0.22,1,0.36,1) 0.55s;
-        }
-        .vm-grid.visible { opacity: 1; transform: translateY(0); }
-
-        .vm-card {
-          padding: 22px 20px;
-          border-radius: 16px;
-          background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
-          border: 1px solid rgba(201,168,76,0.15);
-          position: relative;
-          overflow: hidden;
-          transition: border-color 0.3s ease, transform 0.3s ease;
-        }
-        .vm-card:hover {
-          border-color: rgba(201,168,76,0.4);
-          transform: translateY(-3px);
-        }
-        .vm-card::before {
-          content: '';
-          position: absolute; top: 0; left: 0; right: 0; height: 2px;
-          background: linear-gradient(90deg, transparent, var(--gold), transparent);
-          opacity: 0;
-          transition: opacity 0.3s ease;
-        }
-        .vm-card:hover::before { opacity: 1; }
-
-        .vm-title {
-          font-family: 'Cormorant Garamond', serif;
-          font-size: 18px;
-          font-weight: 700;
-          color: var(--gold);
-          margin-bottom: 10px;
-          display: flex; align-items: center; gap: 8px;
-        }
-        .vm-icon { font-size: 16px; opacity: 0.8; }
-        .vm-desc {
-          font-size: 12.5px;
-          color: rgba(255,255,255,0.55);
-          line-height: 1.75;
-        }
-
-        /* CTA */
-        .cta-block {
-          opacity: 0;
-          transform: translateY(12px);
-          transition: all 0.7s cubic-bezier(0.22,1,0.36,1) 0.65s;
-        }
-        .cta-block.visible { opacity: 1; transform: translateY(0); }
-
-        .cta-heading {
-          font-family: 'Cormorant Garamond', serif;
-          font-size: 22px;
-          font-weight: 700;
-          color: var(--black);
-          margin-bottom: 10px;
-        }
-        .cta-desc {
-          font-size: 13.5px;
-          color: var(--gray-text);
-          line-height: 1.7;
-          margin-bottom: 24px;
-          max-width: 480px;
-        }
-        .cta-buttons { display: flex; gap: 12px; flex-wrap: wrap; }
-
-        .btn-primary {
-          display: inline-flex; align-items: center; gap: 8px;
-          padding: 14px 28px;
-          background: linear-gradient(135deg, var(--red), #922B21);
-          color: #fff;
-          font-family: 'DM Sans', sans-serif;
-          font-size: 14px;
-          font-weight: 600;
-          letter-spacing: 0.02em;
-          border: none;
-          border-radius: 10px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          box-shadow: 0 4px 20px rgba(192,57,43,0.3);
-          text-decoration: none;
-        }
-        .btn-primary:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 8px 32px rgba(192,57,43,0.45);
-          background: linear-gradient(135deg, #d63e2e, #a93226);
-        }
-
-        .btn-secondary {
-          display: inline-flex; align-items: center; gap: 8px;
-          padding: 14px 28px;
-          background: transparent;
-          color: var(--black);
-          font-family: 'DM Sans', sans-serif;
-          font-size: 14px;
-          font-weight: 600;
-          letter-spacing: 0.02em;
-          border: 1.5px solid rgba(0,0,0,0.18);
-          border-radius: 10px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          text-decoration: none;
-        }
-        .btn-secondary:hover {
-          border-color: var(--gold);
-          color: #8a5e00;
-          background: var(--gold-dim);
-          transform: translateY(-2px);
-        }
-
-        .btn-arrow { font-size: 16px; transition: transform 0.3s ease; }
-        .btn-primary:hover .btn-arrow,
-        .btn-secondary:hover .btn-arrow { transform: translateX(3px); }
-
-        /* ── BOTTOM STRIP ── */
-        .bottom-strip {
-          margin-top: 100px;
-          background: linear-gradient(135deg, #0A0A0A 0%, #1a1a1a 100%);
-          border-radius: 24px;
-          border: 1px solid rgba(201,168,76,0.15);
-          padding: 60px;
-          display: grid;
-          grid-template-columns: 1fr auto;
-          gap: 40px;
-          align-items: center;
-          position: relative;
-          overflow: hidden;
-        }
-        .bottom-strip::before {
-          content: '';
-          position: absolute; top: -60px; right: -60px;
-          width: 240px; height: 240px;
-          background: radial-gradient(circle, rgba(201,168,76,0.08), transparent 70%);
-          pointer-events: none;
-        }
-
-        .strip-badge {
-          display: inline-flex; align-items: center; gap: 6px;
-          margin-bottom: 14px;
-        }
-        .strip-badge-line {
-          width: 24px; height: 1px;
-          background: var(--gold);
-        }
-        .strip-badge-text {
-          font-size: 10px;
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
-          color: var(--gold);
-          font-weight: 600;
-        }
-
-        .strip-heading {
-          font-family: 'Cormorant Garamond', serif;
-          font-size: clamp(24px, 2.5vw, 36px);
-          font-weight: 700;
-          color: #fff;
-          line-height: 1.2;
-          margin-bottom: 12px;
-        }
-        .strip-desc {
-          font-size: 14px;
-          color: rgba(255,255,255,0.5);
-          line-height: 1.7;
-          max-width: 520px;
-        }
-
-        .strip-buttons { display: flex; flex-direction: column; gap: 12px; min-width: 200px; }
-
-        .btn-gold {
-          display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-          padding: 14px 28px;
-          background: linear-gradient(135deg, var(--gold), var(--gold-light));
-          color: #000;
-          font-family: 'DM Sans', sans-serif;
-          font-size: 14px;
-          font-weight: 700;
-          border: none;
-          border-radius: 10px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          box-shadow: 0 4px 20px rgba(201,168,76,0.25);
-          text-decoration: none;
-          white-space: nowrap;
-        }
-        .btn-gold:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 8px 32px rgba(201,168,76,0.4);
-        }
-
-        .btn-ghost {
-          display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-          padding: 14px 28px;
-          background: transparent;
-          color: rgba(255,255,255,0.7);
-          font-family: 'DM Sans', sans-serif;
-          font-size: 14px;
-          font-weight: 500;
-          border: 1px solid rgba(255,255,255,0.12);
-          border-radius: 10px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          text-decoration: none;
-          white-space: nowrap;
-        }
-        .btn-ghost:hover {
-          border-color: rgba(201,168,76,0.4);
-          color: var(--gold);
-          background: rgba(201,168,76,0.05);
-          transform: translateY(-2px);
-        }
-
-        /* responsive */
-        @media (max-width: 1024px) {
-          .about-grid { grid-template-columns: 1fr; gap: 60px; }
-          .left-col { display: none; }
-          .stats-card { position: static; margin-top: 20px; }
-          .bottom-strip { grid-template-columns: 1fr; }
-          .strip-buttons { flex-direction: row; }
-        }
-        @media (max-width: 640px) {
-          .about-container { padding: 0 20px; }
-          .highlights { grid-template-columns: 1fr; }
-          .vm-grid { grid-template-columns: 1fr; }
-          .bottom-strip { padding: 36px 28px; }
-          .strip-buttons { flex-direction: column; }
-        }
-      `}</style>
-
-      <section className="about-section" ref={sectionRef}>
-        <div className="about-container">
-
-          {/* ── MAIN GRID ── */}
-          <div className="about-grid">
-
-            {/* LEFT */}
-            <div className="left-col">
-              <div
-                className="image-wrapper"
-                style={{
-                  opacity: sectionInView ? 1 : 0,
-                  transform: sectionInView ? "translateX(0)" : "translateX(-30px)",
-                  transition: "all 0.9s cubic-bezier(0.22,1,0.36,1) 0.15s",
-                }}
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80"
-                  alt="Dubai skyline — EzzyBiz"
-                />
-                <div className="image-overlay" />
-                <div className="image-label">
-                  <div className="image-label-icon">
-                    <RiBuildingLine />
-                  </div>
-                  <div className="image-label-text">
-                    <span>Headquartered in</span>
-                    <strong>Dubai, UAE</strong>
-                  </div>
+      <div className="max-w-[1280px] mx-auto px-5 md:px-10 relative z-10">
+        {/* Main Grid */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+          
+          {/* LEFT COLUMN */}
+          <div className="relative">
+            <div
+              className="relative rounded-3xl overflow-hidden aspect-[4/5] shadow-2xl"
+              style={{
+                opacity: sectionInView ? 1 : 0,
+                transform: sectionInView ? "translateX(0)" : "translateX(-30px)",
+                transition: "all 0.9s cubic-bezier(0.22,1,0.36,1) 0.15s",
+              }}
+            >
+              <img
+                src="https://i.pinimg.com/736x/bb/19/dc/bb19dc3b56d00260b01578863be70788.jpg"
+                alt="Dubai skyline — EzzyBiz"
+                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#0f0f1a]/20 via-[#d7193f]/10 to-[#0f0f1a]/60" />
+              
+              {/* Image Label */}
+              <div className="absolute bottom-6 left-6 flex items-center gap-3 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#d7193f] to-[#b81236] flex items-center justify-center text-white text-xl">
+                  <RiBuildingLine />
                 </div>
-              </div>
-
-              {/* floating stats card */}
-              <div className="stats-card" ref={statsRef}>
-                {stats.map((s, i) => (
-                  <StatItem key={i} value={s.value} label={s.label} index={i} inView={statsInView} />
-                ))}
+                <div className="text-white">
+                  <span className="text-[10px] tracking-wider uppercase opacity-70 block">Headquartered in</span>
+                  <strong className="text-sm font-semibold">Dubai, UAE</strong>
+                </div>
               </div>
             </div>
 
-            {/* RIGHT */}
-            <div className="right-col">
+            {/* Floating Stats Card */}
+            <div
+              ref={statsRef}
+              className="absolute -bottom-8 -right-4 lg:-right-8 bg-white/95 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-gray-100 grid grid-cols-2 gap-5 min-w-[280px] lg:min-w-[340px] z-10"
+            >
+              {stats.map((s, i) => (
+                <StatItem key={i} value={s.value} label={s.label} index={i} inView={statsInView} />
+              ))}
+            </div>
+          </div>
 
-              <div className={`section-badge ${sectionInView ? "visible" : ""}`}>
-                <div className="badge-dot" />
-                <span className="badge-text">About EzzyBiz</span>
-              </div>
+          {/* RIGHT COLUMN */}
+          <div className="pt-0 lg:pt-4">
+            {/* Badge */}
+            <div
+              className={`inline-flex items-center gap-2 bg-[#d7193f]/5 backdrop-blur-sm border border-[#d7193f]/10 rounded-full px-4 py-1.5 mb-6 transition-all duration-600 ${
+                sectionInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
+              }`}
+              style={{ transitionDelay: "0.1s" }}
+            >
+              <div className="w-1.5 h-1.5 rounded-full bg-[#d7193f] animate-pulse" />
+              <span className="text-[10px] font-semibold tracking-[0.16em] uppercase text-[#d7193f]">About EzzyBiz</span>
+            </div>
 
-              <h2 className={`main-heading ${sectionInView ? "visible" : ""}`}>
-                Trusted Business Setup &{" "}
-                <span className="heading-accent">Corporate Service</span>{" "}
-                Provider In Dubai
-              </h2>
+            {/* Heading */}
+            <h2
+              className={`font-sans text-[clamp(32px,4vw,48px)] font-bold text-[#0f0f1a] leading-[1.2] mb-6 transition-all duration-700 ${
+                sectionInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+              style={{ transitionDelay: "0.2s" }}
+            >
+              Trusted Business Setup &{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d7193f] to-[#e8718a]">Corporate Service</span>{" "}
+              Provider In Dubai
+            </h2>
 
-              <p className={`main-desc ${sectionInView ? "visible" : ""}`}>
-                EzzyBiz is a professional corporate consultancy firm helping entrepreneurs, startups, and international investors establish and grow their businesses across the UAE. With deep industry knowledge and a client-focused approach, we simplify the entire business setup process with reliable guidance, transparent solutions, and end-to-end corporate support.
-              </p>
+            {/* Description */}
+            <p
+              className={`text-[15px] text-gray-600 leading-relaxed mb-6 transition-all duration-700 ${
+                sectionInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+              style={{ transitionDelay: "0.3s" }}
+            >
+              EzzyBiz is a professional corporate consultancy firm helping entrepreneurs, startups, and international 
+              investors establish and grow their businesses across the UAE. With deep industry knowledge and a 
+              client-focused approach, we simplify every step of your business journey.
+            </p>
 
-              <p
-                className="main-desc"
-                style={{
-                  opacity: sectionInView ? 1 : 0,
-                  transform: sectionInView ? "translateY(0)" : "translateY(12px)",
-                  transition: "all 0.7s cubic-bezier(0.22,1,0.36,1) 0.38s",
-                }}
-              >
-                From mainland and free zone company formation to VAT registration, PRO services, licensing, and compliance management, our experienced consultants ensure every stage of your business journey is handled smoothly and efficiently.
-              </p>
-
-              <div className={`highlights ${sectionInView ? "visible" : ""}`}>
-                {highlights.map((h, i) => (
-                  <div className="highlight-item" key={i}>
-                    <div className="highlight-icon">{h.icon}</div>
-                    <span className="highlight-text">{h.text}</span>
+            {/* Highlights Grid */}
+            <div
+              className={`grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8 transition-all duration-700 ${
+                sectionInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+              style={{ transitionDelay: "0.45s" }}
+            >
+              {highlights.map((h, i) => (
+                <div
+                  key={i}
+                  className="flex items-center gap-3 p-3 rounded-xl bg-white border border-gray-100 shadow-sm transition-all duration-300 hover:shadow-md hover:border-[#d7193f]/20 hover:-translate-y-0.5 cursor-default"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#d7193f]/10 to-[#d7193f]/5 flex items-center justify-center text-[#d7193f] text-base">
+                    {h.icon}
                   </div>
-                ))}
-              </div>
-
-              {/* Vision / Mission */}
-              <div className={`vm-grid ${sectionInView ? "visible" : ""}`}>
-                <div className="vm-card">
-                  <div className="vm-title">
-                    <HiOutlineGlobeAlt className="vm-icon" />
-                    Our Vision
-                  </div>
-                  <p className="vm-desc">
-                    To become a trusted corporate partner for entrepreneurs and global businesses by delivering professional, transparent, and growth-driven business solutions across the UAE.
-                  </p>
+                  <span className="text-[12.5px] font-medium text-gray-700">{h.text}</span>
                 </div>
-                <div className="vm-card">
-                  <div className="vm-title">
-                    <TbShieldCheck className="vm-icon" />
-                    Our Mission
-                  </div>
-                  <p className="vm-desc">
-                    Simplifying business setup and corporate compliance in Dubai through expert consultation, efficient processes, and reliable end-to-end support for every client.
-                  </p>
-                </div>
-              </div>
+              ))}
+            </div>
 
-              {/* CTA */}
-              {/* <div className={`cta-block ${sectionInView ? "visible" : ""}`}>
-                <h3 className="cta-heading">Build Your Business In Dubai With Confidence</h3>
-                <p className="cta-desc">
-                  Partner with EzzyBiz and experience seamless company formation, corporate services, and business growth solutions tailored for the UAE market.
+            {/* Vision & Mission */}
+            <div
+              className={`grid sm:grid-cols-2 gap-4 mb-10 transition-all duration-700 ${
+                sectionInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+              style={{ transitionDelay: "0.55s" }}
+            >
+              {/* Vision Card */}
+              <div className="p-5 rounded-2xl bg-gradient-to-br from-[#0f0f1a] to-[#1a1a2e] border border-[#d7193f]/10 transition-all duration-300 hover:border-[#d7193f]/30 hover:-translate-y-1 group">
+                <div className="flex items-center gap-2 mb-3">
+                  <HiOutlineGlobeAlt className="text-[#d7193f] text-lg" />
+                  <h3 className="font-bold text-[#d7193f] text-base">Our Vision</h3>
+                </div>
+                <p className="text-[12.5px] text-gray-400 leading-relaxed">
+                  To become a trusted corporate partner for entrepreneurs and global businesses by delivering 
+                  professional, transparent, and growth-driven business solutions across the UAE.
                 </p>
-                <div className="cta-buttons">
-                  <a href="#" className="btn-primary">
-                    Start Your Company
-                    <span className="btn-arrow">→</span>
-                  </a>
-                  <a href="#" className="btn-secondary">
-                    Talk To Our Experts
-                    <span className="btn-arrow">→</span>
-                  </a>
-                </div>
-              </div> */}
-
-            </div>
-          </div>
-
-          {/* ── BOTTOM STRIP ── */}
-          <div className="bottom-strip">
-            <div>
-              <div className="strip-badge">
-                <div className="strip-badge-line" />
-                <span className="strip-badge-text">Get Started Today</span>
               </div>
-              <h2 className="strip-heading">
-                Build Your Business In Dubai<br />With Confidence
-              </h2>
-              <p className="strip-desc">
-                Partner with EzzyBiz and experience seamless company formation, corporate services, and business growth solutions tailored for the UAE market.
+
+              {/* Mission Card */}
+              <div className="p-5 rounded-2xl bg-gradient-to-br from-[#0f0f1a] to-[#1a1a2e] border border-[#d7193f]/10 transition-all duration-300 hover:border-[#d7193f]/30 hover:-translate-y-1 group">
+                <div className="flex items-center gap-2 mb-3">
+                  <TbShieldCheck className="text-[#d7193f] text-lg" />
+                  <h3 className="font-bold text-[#d7193f] text-base">Our Mission</h3>
+                </div>
+                <p className="text-[12.5px] text-gray-400 leading-relaxed">
+                  Simplifying business setup and corporate compliance in Dubai through expert consultation, 
+                  efficient processes, and reliable end-to-end support for every client.
+                </p>
+              </div>
+            </div>
+
+            {/* CTA Buttons */}
+            {/* <div
+              className={`flex flex-col sm:flex-row gap-4 transition-all duration-700 ${
+                sectionInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              }`}
+              style={{ transitionDelay: "0.65s" }}
+            >
+              <button className="group flex items-center justify-center gap-2 bg-gradient-to-r from-[#d7193f] to-[#b81236] text-white px-6 py-3 rounded-xl text-sm font-semibold tracking-wide transition-all duration-300 hover:shadow-lg hover:shadow-[#d7193f]/30 hover:scale-105">
+                Start Your Company
+                <LuArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </button>
+              <button className="flex items-center justify-center gap-2 border border-gray-300 bg-white text-gray-700 px-6 py-3 rounded-xl text-sm font-semibold tracking-wide transition-all duration-300 hover:border-[#d7193f] hover:text-[#d7193f] hover:shadow-md">
+                <LuMessageCircle size={14} />
+                Talk To Our Experts
+              </button>
+            </div> */}
+          </div>
+        </div>
+
+        {/* Bottom CTA Strip */}
+        <div
+          className={`mt-20 md:mt-28 bg-gradient-to-r from-[#0f0f1a] to-[#1a1a2e] rounded-2xl p-8 md:p-12 relative overflow-hidden transition-all duration-700 ${
+            sectionInView ? "opacity-100 scale-100" : "opacity-0 scale-95"
+          }`}
+          style={{ transitionDelay: "0.75s" }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-[#d7193f]/10 to-transparent" />
+          <div className="absolute top-0 right-0 w-48 h-48 bg-[#d7193f]/20 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#e8718a]/10 rounded-full blur-3xl" />
+          
+          {/* Decorative lines */}
+          <div className="absolute top-0 left-1/4 w-32 h-px bg-gradient-to-r from-transparent via-[#d7193f]/30 to-transparent" />
+          
+          <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
+            <div className="text-center lg:text-left">
+              <div className="inline-flex items-center gap-2 mb-4">
+                <div className="w-6 h-px bg-[#d7193f]" />
+                <span className="text-[10px] font-semibold tracking-[0.2em] uppercase text-[#d7193f]">Get Started Today</span>
+              </div>
+              <h3 className="font-sans text-[clamp(24px,3vw,34px)] font-bold text-white leading-[1.2] mb-3">
+                Build Your Business In Dubai
+                <br className="hidden sm:block" />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d7193f] to-[#e8718a]"> With Confidence</span>
+              </h3>
+              <p className="text-gray-400 text-sm max-w-lg">
+                Partner with EzzyBiz and experience seamless company formation, corporate services, 
+                and business growth solutions tailored for the UAE market.
               </p>
             </div>
-            <div className="strip-buttons">
-              <a href="#" className="btn-gold">
-                <RiBuildingLine style={{ fontSize: 18 }} />
+            <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+              <button className="group flex items-center justify-center gap-2 bg-gradient-to-r from-[#d7193f] to-[#b81236] text-white px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-[#d7193f]/30 hover:scale-105">
+                <RiBuildingLine size={16} />
                 Start Your Company
-              </a>
-              <a href="#" className="btn-ghost">
-                <FaHandshake style={{ fontSize: 16 }} />
+              </button>
+              <button className="flex items-center justify-center gap-2 border border-white/20 text-white/80 px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 hover:bg-white/10 hover:border-[#d7193f]/50 hover:text-[#d7193f]">
+                <FaHandshake size={14} />
                 Talk To Our Experts
-              </a>
+              </button>
             </div>
           </div>
-
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }

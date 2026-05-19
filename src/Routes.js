@@ -11,6 +11,9 @@ import VAT from "./pages/VAT";
 import AllVisa from "./pages/visa/AllVisa";
 import Ejari from "./pages/visa/Ejari";
 import GoldenVisa from "./pages/visa/GoldenVisa";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsConditions from "./pages/TermsConditions";
+import CookiePolicy from "./pages/CookiePolicy";
 
 const appRoute = [
   { path: "/", element: Home },
@@ -26,6 +29,9 @@ const appRoute = [
   { path: "/vat", element: VAT },
   { path: "/banking", element: Banking },
   { path: "/contact", element: Contact },
+  { path: "/privacy-policy", element: PrivacyPolicy },
+  { path: "/terms-conditions", element: TermsConditions },
+  { path: "/cookie-policy", element: CookiePolicy },
 ];
 
 export default appRoute;

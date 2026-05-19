@@ -94,7 +94,7 @@ function StepCard({ step, index, isEven }) {
       <div className="flex justify-start md:justify-center w-[48px] md:w-[56px] pt-4 md:pt-5 relative z-10 shrink-0">
         <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-[#d7193f] to-[#b81236] shadow-lg shadow-[#d7193f]/20 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-[#d7193f]/30">
           <div className="absolute inset-0 rounded-full bg-white/10 animate-pulse group-hover:animate-none" />
-          <span className="font-bold text-white text-sm md:text-base leading-none z-10 font-['Inter',sans-serif] tracking-wide">
+          <span className="font-bold text-white text-sm md:text-base leading-none z-10 font-sans tracking-wide">
             {step.number}
           </span>
         </div>
@@ -128,7 +128,7 @@ function StepCard({ step, index, isEven }) {
                 <Icon size={16} strokeWidth={1.5} className="text-[#d7193f]" />
               </div>
               <div className={`flex-1 ${isEven ? "md:items-end" : ""}`}>
-                <h3 className="font-['Inter',sans-serif] text-base md:text-lg font-bold text-[#0f0f1a] mb-1 transition-colors duration-200 group-hover:text-[#d7193f]">
+                <h3 className="font-sans text-base md:text-lg font-bold text-[#0f0f1a] mb-1 transition-colors duration-200 group-hover:text-[#d7193f]">
                   {step.title}
                 </h3>
                 <p className="text-[12px] md:text-[13px] leading-relaxed text-[#6b7280] font-normal">
@@ -201,7 +201,7 @@ export default function BusinessSetupProcess() {
   }, []);
 
   return (
-    <section className="relative bg-gradient-to-br from-[#fef8f9] via-white to-[#fff5f6] font-['Inter',sans-serif] py-16 md:py-20 overflow-hidden">
+    <section className="relative bg-gradient-to-br from-[#fef8f9] via-white to-[#fff5f6] font-sans py-16 md:py-20 overflow-hidden">
       {/* Modern Background Elements */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         {/* Static gradient orbs instead of animated to prevent repaint lag on scroll */}
@@ -215,7 +215,7 @@ export default function BusinessSetupProcess() {
         <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#d7193f]/20 to-transparent" />
       </div>
 
-      <div className="max-w-[1100px] mx-auto px-5 md:px-8 relative z-10">
+      <div className="max-w-[1280px] mx-auto px-5 md:px-8 relative z-10">
         {/* Header - More Compact */}
         <div 
           ref={headerRef} 
@@ -227,7 +227,7 @@ export default function BusinessSetupProcess() {
             <span className="text-[10px] font-semibold tracking-[1px] uppercase text-[#d7193f]">Streamlined Process</span>
           </div>
           
-          <h2 className="font-['Playfair_Display',serif] text-[clamp(28px,4vw,44px)] font-bold text-[#0f0f1a] leading-[1.2] mb-3">
+          <h2 className="font-sans text-[clamp(28px,4vw,44px)] font-bold text-[#0f0f1a] leading-[1.2] mb-3">
             Simple & Fast Business
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d7193f] to-[#e8718a]"> Setup Process</span>
             <br />
@@ -285,7 +285,7 @@ export default function BusinessSetupProcess() {
             
             <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-4">
               <div className="text-center md:text-left">
-                <h4 className="text-white text-lg md:text-xl font-bold font-['Playfair_Display',serif] mb-1">
+                <h4 className="text-white text-lg md:text-xl font-bold font-sans mb-1">
                   Ready to <span className="text-[#e8718a]">Launch</span> Your Business?
                 </h4>
                 <p className="text-white/60 text-xs md:text-sm">

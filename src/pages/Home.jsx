@@ -10,10 +10,10 @@ const Home = () => {
   return (
     <div>
       <HeroSection />
+      <AboutSection />
       <ServicesSection />
       <WhyChooseUs />
       <BusinessSetupProcess />
-      <AboutSection />
       <PackageToCTA />
     </div>
   )

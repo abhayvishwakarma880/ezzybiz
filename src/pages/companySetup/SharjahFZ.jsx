@@ -248,16 +248,32 @@ export default function SharjahFZ() {
   const [ctaRef, ctaVisible] = useIntersectionObserver({ threshold: 0.1 });
 
   return (
-    <div className="bg-white font-['Inter',sans-serif]">
+    <div className="bg-white font-sans">
       {/* ========== HERO SECTION ========== */}
-      <section className="relative bg-gradient-to-br from-[#fef8f9] via-white to-[#fff5f6] py-20 md:py-28 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-[#fef8f9] via-white to-[#fff5f6] pt-6 pb-20 md:pt-8 md:pb-28 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-[10%] w-[300px] h-[300px] bg-[#d7193f]/5 rounded-full blur-3xl animate-pulse" />
           <div className="absolute bottom-0 right-[5%] w-[400px] h-[400px] bg-[#e8718a]/5 rounded-full blur-3xl animate-pulse delay-1000" />
           <div className="absolute inset-0 bg-[linear-gradient(rgba(215,25,63,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(215,25,63,0.02)_1px,transparent_1px)] bg-[size:40px_40px]" />
         </div>
 
-        <div className="max-w-[1100px] mx-auto px-5 md:px-8 relative z-10">
+        {/* ========== BREADCRUMBS ========== */}
+        <div className="flex items-center justify-between mb-6 -mt-5 ml-6">
+          <div className="text-sm text-gray-500 flex items-center gap-2">
+            <Link
+              to="/"
+              className="hover:text-[#d7193f] transition-colors no-underline"
+            >
+              Home
+            </Link>
+
+            <ChevronRight size={14} className="text-gray-400" />
+
+            <span className="text-[#d7193f] font-medium">Sharjah Free Zone</span>
+          </div>
+        </div>
+
+        <div className="max-w-[1280px] mx-auto px-5 md:px-8 relative z-10">
           <div
             ref={heroRef}
             className={`text-center max-w-3xl mx-auto transition-all duration-600 ${
@@ -269,7 +285,7 @@ export default function SharjahFZ() {
               <span className="text-[10px] font-semibold tracking-[1px] uppercase text-[#d7193f]">SHARJAH FREE ZONE SETUP</span>
             </div>
 
-            <h1 className="font-['Playfair_Display',serif] text-[clamp(34px,5vw,54px)] font-bold text-[#0f0f1a] leading-[1.2] mb-4">
+            <h1 className="font-sans text-[clamp(34px,5vw,54px)] font-bold text-[#0f0f1a] leading-[1.2] mb-4">
               Sharjah Free Zone
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d7193f] to-[#e8718a]">Company Formation Services</span>
@@ -295,7 +311,7 @@ export default function SharjahFZ() {
 
       {/* ========== INTRODUCTION SECTION ========== */}
       <section className="py-16 md:py-20 bg-white">
-        <div className="max-w-[1100px] mx-auto px-5 md:px-8">
+        <div className="max-w-[1280px] mx-auto px-5 md:px-8">
           <div
             ref={introRef}
             className={`max-w-3xl mx-auto text-center transition-all duration-600 ${
@@ -307,7 +323,7 @@ export default function SharjahFZ() {
               <span className="text-[10px] font-semibold tracking-[2px] uppercase text-[#d7193f]">SHARJAH FREE ZONE</span>
               <div className="w-8 h-[2px] bg-[#d7193f]/40" />
             </div>
-            <h2 className="font-['Playfair_Display',serif] text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a] mb-5">
+            <h2 className="font-sans text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a] mb-5">
               What Is Sharjah Free Zone Company Formation?
             </h2>
             <div className="space-y-4 text-gray-600 text-[15px] leading-relaxed text-left">
@@ -332,7 +348,7 @@ export default function SharjahFZ() {
 
       {/* ========== BENEFITS SECTION ========== */}
       <section className="py-16 md:py-20 bg-gradient-to-br from-[#fef8f9] to-white">
-        <div className="max-w-[1100px] mx-auto px-5 md:px-8">
+        <div className="max-w-[1280px] mx-auto px-5 md:px-8">
           <div
             ref={benefitsRef}
             className={`transition-all duration-600 ${
@@ -345,7 +361,7 @@ export default function SharjahFZ() {
                 <span className="text-[10px] font-semibold tracking-[2px] uppercase text-[#d7193f]">KEY BENEFITS</span>
                 <div className="w-8 h-[2px] bg-[#d7193f]/40" />
               </div>
-              <h2 className="font-['Playfair_Display',serif] text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a]">
+              <h2 className="font-sans text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a]">
                 Benefits Of Sharjah Free Zone Company Formation
               </h2>
             </div>
@@ -361,7 +377,7 @@ export default function SharjahFZ() {
 
       {/* ========== BUSINESS ACTIVITIES SECTION ========== */}
       <section className="py-16 md:py-20 bg-white">
-        <div className="max-w-[1100px] mx-auto px-5 md:px-8">
+        <div className="max-w-[1280px] mx-auto px-5 md:px-8">
           <div
             ref={activitiesRef}
             className={`transition-all duration-600 ${
@@ -374,7 +390,7 @@ export default function SharjahFZ() {
                 <span className="text-[10px] font-semibold tracking-[2px] uppercase text-[#d7193f]">BUSINESS ACTIVITIES</span>
                 <div className="w-8 h-[2px] bg-[#d7193f]/40" />
               </div>
-              <h2 className="font-['Playfair_Display',serif] text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a]">
+              <h2 className="font-sans text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a]">
                 Popular Business Activities In Sharjah Free Zone
               </h2>
             </div>
@@ -403,7 +419,7 @@ export default function SharjahFZ() {
                 <span className="text-[10px] font-semibold tracking-[2px] uppercase text-[#d7193f]">SETUP PROCESS</span>
                 <div className="w-8 h-[2px] bg-[#d7193f]/40" />
               </div>
-              <h2 className="font-['Playfair_Display',serif] text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a]">
+              <h2 className="font-sans text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a]">
                 Sharjah Free Zone Company Setup Process
               </h2>
             </div>
@@ -419,7 +435,7 @@ export default function SharjahFZ() {
 
       {/* ========== WHY CHOOSE EZZYBIZ ========== */}
       <section className="py-16 md:py-20 bg-white">
-        <div className="max-w-[1100px] mx-auto px-5 md:px-8">
+        <div className="max-w-[1280px] mx-auto px-5 md:px-8">
           <div
             ref={whyRef}
             className={`transition-all duration-600 ${
@@ -432,7 +448,7 @@ export default function SharjahFZ() {
                 <span className="text-[10px] font-semibold tracking-[2px] uppercase text-[#d7193f]">WHY EZZYBIZ</span>
                 <div className="w-8 h-[2px] bg-[#d7193f]/40" />
               </div>
-              <h2 className="font-['Playfair_Display',serif] text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a]">
+              <h2 className="font-sans text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a]">
                 Why Choose EzzyBiz For Sharjah Free Zone Setup
               </h2>
             </div>
@@ -470,7 +486,7 @@ export default function SharjahFZ() {
                 <span className="text-[10px] font-semibold tracking-[2px] uppercase text-[#d7193f]">FAQ</span>
                 <div className="w-8 h-[2px] bg-[#d7193f]/40" />
               </div>
-              <h2 className="font-['Playfair_Display',serif] text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a]">
+              <h2 className="font-sans text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a]">
                 Frequently Asked Questions
               </h2>
             </div>
@@ -486,7 +502,7 @@ export default function SharjahFZ() {
 
       {/* ========== FINAL CTA SECTION ========== */}
       <section className="py-16 md:py-20 bg-white">
-        <div className="max-w-[1100px] mx-auto px-5 md:px-8">
+        <div className="max-w-[1280px] mx-auto px-5 md:px-8">
           <div
             ref={ctaRef}
             className={`bg-gradient-to-r from-[#0f0f1a] to-[#1a1a2e] rounded-2xl p-8 md:p-12 relative overflow-hidden transition-all duration-600 ${
@@ -498,7 +514,7 @@ export default function SharjahFZ() {
             <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#e8718a]/10 rounded-full blur-3xl" />
 
             <div className="relative z-10 text-center">
-              <h2 className="font-['Playfair_Display',serif] text-[clamp(24px,4vw,34px)] font-bold text-white mb-3">
+              <h2 className="font-sans text-[clamp(24px,4vw,34px)] font-bold text-white mb-3">
                 Launch Your Sharjah Free Zone Business Today
               </h2>
               <p className="text-white/70 text-sm mb-8 max-w-lg mx-auto">

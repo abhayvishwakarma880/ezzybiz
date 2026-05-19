@@ -33,22 +33,26 @@ const WHY_CHOOSE = [
   {
     icon: Award,
     title: "Experienced Business Consultants",
-    description: "Expert guidance for mainland, free zone, and offshore business setup across the UAE.",
+    description:
+      "Expert guidance for mainland, free zone, and offshore business setup across the UAE.",
   },
   {
     icon: Clock,
     title: "Fast & Hassle-Free Process",
-    description: "Efficient documentation and approval handling for quick company formation.",
+    description:
+      "Efficient documentation and approval handling for quick company formation.",
   },
   {
     icon: Shield,
     title: "Transparent Business Solutions",
-    description: "Clear pricing, honest consultation, and reliable support without hidden charges.",
+    description:
+      "Clear pricing, honest consultation, and reliable support without hidden charges.",
   },
   {
     icon: TrendingUp,
     title: "Complete Corporate Support",
-    description: "From licensing to banking, we provide complete business support under one roof.",
+    description:
+      "From licensing to banking, we provide complete business support under one roof.",
   },
 ];
 
@@ -62,11 +66,34 @@ const SERVICES = [
 ];
 
 const PROCESS_STEPS = [
-  { step: "01", title: "Consultation & Business Planning", description: "Discuss your goals and get expert guidance on the right business structure." },
-  { step: "02", title: "Choose Business Activity & Jurisdiction", description: "Select ideal activities and jurisdiction for your business model." },
-  { step: "03", title: "Documentation & Government Approvals", description: "We handle all paperwork and approvals for a smooth process." },
-  { step: "04", title: "License Issuance & Visa Processing", description: "Get your trade license and complete visa processing quickly." },
-  { step: "05", title: "Launch & Grow Your Business", description: "Start operations with complete banking and compliance support." },
+  {
+    step: "01",
+    title: "Consultation & Business Planning",
+    description:
+      "Discuss your goals and get expert guidance on the right business structure.",
+  },
+  {
+    step: "02",
+    title: "Choose Business Activity & Jurisdiction",
+    description:
+      "Select ideal activities and jurisdiction for your business model.",
+  },
+  {
+    step: "03",
+    title: "Documentation & Government Approvals",
+    description: "We handle all paperwork and approvals for a smooth process.",
+  },
+  {
+    step: "04",
+    title: "License Issuance & Visa Processing",
+    description: "Get your trade license and complete visa processing quickly.",
+  },
+  {
+    step: "05",
+    title: "Launch & Grow Your Business",
+    description:
+      "Start operations with complete banking and compliance support.",
+  },
 ];
 
 const TESTIMONIALS = [
@@ -95,12 +122,15 @@ function useIntersectionObserver(options = {}) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setIsVisible(true);
-        observer.disconnect();
-      }
-    }, { threshold: 0.1, ...options });
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1, ...options },
+    );
 
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
@@ -124,7 +154,9 @@ function StatCard({ stat, index }) {
       <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-gradient-to-br from-[#d7193f]/10 to-[#d7193f]/5 flex items-center justify-center">
         <Icon size={22} className="text-[#d7193f]" />
       </div>
-      <div className="text-2xl md:text-3xl font-bold text-[#0f0f1a] font-['Playfair_Display',serif]">{stat.number}</div>
+      <div className="text-2xl md:text-3xl font-bold text-[#0f0f1a] font-sans">
+        {stat.number}
+      </div>
       <div className="text-xs text-gray-500 mt-1">{stat.label}</div>
     </div>
   );
@@ -146,8 +178,12 @@ function WhyChooseCard({ item, index }) {
         <Icon size={18} className="text-[#d7193f]" />
       </div>
       <div>
-        <h3 className="font-semibold text-gray-900 mb-1 text-base">{item.title}</h3>
-        <p className="text-xs text-gray-500 leading-relaxed">{item.description}</p>
+        <h3 className="font-semibold text-gray-900 mb-1 text-base">
+          {item.title}
+        </h3>
+        <p className="text-xs text-gray-500 leading-relaxed">
+          {item.description}
+        </p>
       </div>
     </div>
   );
@@ -168,7 +204,9 @@ function ServiceCard({ service, index }) {
       <div className="w-7 h-7 rounded-md bg-[#d7193f]/5 flex items-center justify-center group-hover:bg-[#d7193f]/10 transition-colors">
         <Icon size={13} className="text-[#d7193f]" />
       </div>
-      <span className="text-sm text-gray-700 group-hover:text-[#d7193f] transition-colors">{service.name}</span>
+      <span className="text-sm text-gray-700 group-hover:text-[#d7193f] transition-colors">
+        {service.name}
+      </span>
     </div>
   );
 }
@@ -193,8 +231,12 @@ function ProcessStep({ step, index }) {
         )}
       </div>
       <div className="flex-1 pb-6">
-        <h4 className="font-semibold text-gray-900 text-sm mb-1">{step.title}</h4>
-        <p className="text-xs text-gray-500 leading-relaxed">{step.description}</p>
+        <h4 className="font-semibold text-gray-900 text-sm mb-1">
+          {step.title}
+        </h4>
+        <p className="text-xs text-gray-500 leading-relaxed">
+          {step.description}
+        </p>
       </div>
     </div>
   );
@@ -216,13 +258,17 @@ function TestimonialCard({ testimonial, index }) {
           <Star key={i} size={14} className="fill-[#d7193f] text-[#d7193f]" />
         ))}
       </div>
-      <p className="text-gray-600 text-sm leading-relaxed mb-4">"{testimonial.text}"</p>
+      <p className="text-gray-600 text-sm leading-relaxed mb-4">
+        "{testimonial.text}"
+      </p>
       <div className="flex items-center gap-2">
         <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#d7193f]/20 to-[#d7193f]/10 flex items-center justify-center">
           <Users size={14} className="text-[#d7193f]" />
         </div>
         <div>
-          <div className="font-semibold text-gray-800 text-xs">{testimonial.name}</div>
+          <div className="font-semibold text-gray-800 text-xs">
+            {testimonial.name}
+          </div>
           <div className="text-gray-400 text-[10px]">{testimonial.role}</div>
         </div>
       </div>
@@ -233,92 +279,140 @@ function TestimonialCard({ testimonial, index }) {
 export default function About() {
   const [heroRef, heroVisible] = useIntersectionObserver({ threshold: 0.1 });
   const [introRef, introVisible] = useIntersectionObserver({ threshold: 0.1 });
-  const [visionRef, visionVisible] = useIntersectionObserver({ threshold: 0.1 });
-  const [servicesRef, servicesVisible] = useIntersectionObserver({ threshold: 0.1 });
-  const [processRef, processVisible] = useIntersectionObserver({ threshold: 0.1 });
+  const [visionRef, visionVisible] = useIntersectionObserver({
+    threshold: 0.1,
+  });
+  const [servicesRef, servicesVisible] = useIntersectionObserver({
+    threshold: 0.1,
+  });
+  const [processRef, processVisible] = useIntersectionObserver({
+    threshold: 0.1,
+  });
   const [ctaRef, ctaVisible] = useIntersectionObserver({ threshold: 0.1 });
 
   return (
-    <section className="bg-white font-['Inter',sans-serif]">
+    <section className="bg-white font-sans">
       {/* ========== HERO SECTION ========== */}
-      <section className="relative bg-gradient-to-br from-[#fef8f9] via-white to-[#fff5f6] py-16 md:py-20 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-[#fef8f9] via-white to-[#fff5f6] pt-6 pb-16 md:pt-8 md:pb-10 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-[10%] w-[300px] h-[300px] bg-[#d7193f]/5 rounded-full blur-3xl animate-pulse" />
           <div className="absolute bottom-0 right-[5%] w-[400px] h-[400px] bg-[#e8718a]/5 rounded-full blur-3xl animate-pulse delay-1000" />
           <div className="absolute inset-0 bg-[linear-gradient(rgba(215,25,63,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(215,25,63,0.02)_1px,transparent_1px)] bg-[size:40px_40px]" />
         </div>
+        {/* ========== BREADCRUMBS ========== */}
+        <div className="flex items-center justify-between mb-6 -mt-5 ml-6">
+          <div className="text-sm text-gray-500 flex items-center gap-2">
+            <Link
+              to="/"
+              className="hover:text-[#d7193f] transition-colors no-underline"
+            >
+              Home
+            </Link>
 
-        <div className="max-w-[1100px] mx-auto px-5 md:px-8 relative z-10">
+            <ChevronRight size={14} className="text-gray-400" />
+
+            <span className="text-[#d7193f] font-medium">About</span>
+          </div>
+        </div>
+
+        <div className="max-w-[1280px]  mx-auto px-5 md:px-8 relative z-10">
           <div
             ref={heroRef}
             className={`text-center max-w-3xl mx-auto transition-all duration-600 ${
-              heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+              heroVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-6"
             }`}
           >
             <div className="inline-flex items-center gap-2 bg-[#d7193f]/5 backdrop-blur-sm border border-[#d7193f]/10 rounded-full px-4 py-1.5 mb-5">
               <CheckCircle2 size={12} className="text-[#d7193f]" />
-              <span className="text-[10px] font-semibold tracking-[1px] uppercase text-[#d7193f]">ABOUT EZZYBIZ</span>
+              <span className="text-[10px] font-semibold tracking-[1px] uppercase text-[#d7193f]">
+                ABOUT EZZYBIZ
+              </span>
             </div>
 
-            <h1 className="font-['Playfair_Display',serif] text-[clamp(32px,5vw,52px)] font-bold text-[#0f0f1a] leading-[1.2] mb-4">
+            <h1 className="font-sans text-[clamp(32px,5vw,52px)] font-bold text-[#0f0f1a] leading-[1.2] mb-4">
               Trusted Business Setup
               <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d7193f] to-[#e8718a]">Consultant In Dubai, UAE</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d7193f] to-[#e8718a]">
+                Consultant In Dubai, UAE
+              </span>
             </h1>
 
             <p className="text-[14px] md:text-[15px] leading-relaxed text-gray-600 mb-8">
-              EzzyBiz is a leading corporate service provider in Dubai, helping entrepreneurs, startups, 
-              and international investors establish and grow their businesses across the UAE. We simplify 
-              company formation, licensing, visa processing, banking assistance, and corporate compliance 
-              with professional guidance and reliable support.
+              EzzyBiz is a leading corporate service provider in Dubai, helping
+              entrepreneurs, startups, and international investors establish and
+              grow their businesses across the UAE. We simplify company
+              formation, licensing, visa processing, banking assistance, and
+              corporate compliance with professional guidance and reliable
+              support.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link to="/contact" className="group flex items-center justify-center gap-2 bg-gradient-to-r from-[#d7193f] to-[#b81236] text-white px-6 py-3 rounded-lg text-sm font-semibold tracking-wide transition-all duration-300 hover:shadow-lg hover:shadow-[#d7193f]/30 hover:scale-105 no-underline">
-                Book Free Consultation <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+            {/* <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Link
+                to="/contact"
+                className="group flex items-center justify-center gap-2 bg-gradient-to-r from-[#d7193f] to-[#b81236] text-white px-6 py-3 rounded-lg text-sm font-semibold tracking-wide transition-all duration-300 hover:shadow-lg hover:shadow-[#d7193f]/30 hover:scale-105 no-underline"
+              >
+                Book Free Consultation{" "}
+                <ArrowRight
+                  size={14}
+                  className="group-hover:translate-x-1 transition-transform"
+                />
               </Link>
-              <a href="tel:+971527069469" className="flex items-center justify-center gap-2 border border-gray-300 bg-white text-gray-700 px-6 py-3 rounded-lg text-sm font-semibold tracking-wide transition-all duration-300 hover:border-[#d7193f] hover:text-[#d7193f] hover:shadow-md no-underline cursor-pointer">
+              <a
+                href="tel:+971527069469"
+                className="flex items-center justify-center gap-2 border border-gray-300 bg-white text-gray-700 px-6 py-3 rounded-lg text-sm font-semibold tracking-wide transition-all duration-300 hover:border-[#d7193f] hover:text-[#d7193f] hover:shadow-md no-underline cursor-pointer"
+              >
                 <MessageCircle size={14} /> Talk To Expert
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
 
       {/* ========== COMPANY INTRO + STATS ========== */}
       <section className="py-16 md:py-20 bg-white">
-        <div className="max-w-[1100px] mx-auto px-5 md:px-8">
+        <div className="max-w-[1280px] mx-auto px-5 md:px-8">
           <div
             ref={introRef}
             className={`grid md:grid-cols-2 gap-10 md:gap-14 items-start transition-all duration-600 ${
-              introVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              introVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-8"
             }`}
           >
             <div>
               <div className="inline-flex items-center gap-2 mb-4">
                 <div className="w-8 h-[2px] bg-[#d7193f]/40" />
-                <span className="text-[10px] font-semibold tracking-[2px] uppercase text-[#d7193f]">WHO WE ARE</span>
+                <span className="text-[10px] font-semibold tracking-[2px] uppercase text-[#d7193f]">
+                  WHO WE ARE
+                </span>
               </div>
-              <h2 className="font-['Playfair_Display',serif] text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a] leading-[1.2] mb-4">
+              <h2 className="font-sans text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a] leading-[1.2] mb-4">
                 Professional Corporate Services Provider In Dubai
               </h2>
               <div className="space-y-3 text-gray-600 text-[14px] leading-relaxed">
                 <p>
-                  EzzyBiz Corporate Services is a Dubai-based business consultancy firm providing complete 
-                  business setup and corporate solutions across the UAE. Our team assists entrepreneurs 
-                  and global investors in establishing mainland, free zone, and offshore companies with 
-                  smooth and efficient processes.
+                  EzzyBiz Corporate Services is a Dubai-based business
+                  consultancy firm providing complete business setup and
+                  corporate solutions across the UAE. Our team assists
+                  entrepreneurs and global investors in establishing mainland,
+                  free zone, and offshore companies with smooth and efficient
+                  processes.
                 </p>
                 <p>
-                  We understand the complexities involved in company formation, government approvals, 
-                  banking procedures, and compliance requirements in the UAE market. Our consultants 
-                  provide personalized guidance to ensure every client receives the right business 
-                  structure and operational support based on their goals.
+                  We understand the complexities involved in company formation,
+                  government approvals, banking procedures, and compliance
+                  requirements in the UAE market. Our consultants provide
+                  personalized guidance to ensure every client receives the
+                  right business structure and operational support based on
+                  their goals.
                 </p>
                 <p>
-                  From company registration and trade licensing to visa processing, VAT services, PRO 
-                  support, and business banking assistance, EzzyBiz delivers end-to-end corporate 
-                  solutions with transparency, professionalism, and efficiency.
+                  From company registration and trade licensing to visa
+                  processing, VAT services, PRO support, and business banking
+                  assistance, EzzyBiz delivers end-to-end corporate solutions
+                  with transparency, professionalism, and efficiency.
                 </p>
               </div>
             </div>
@@ -334,31 +428,39 @@ export default function About() {
 
       {/* ========== VISION & MISSION ========== */}
       <section className="py-16 bg-gradient-to-br from-[#fef8f9] to-white">
-        <div className="max-w-[1100px] mx-auto px-5 md:px-8">
+        <div className="max-w-[1280px] mx-auto px-5 md:px-8">
           <div
             ref={visionRef}
             className={`grid md:grid-cols-2 gap-8 transition-all duration-600 ${
-              visionVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              visionVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-8"
             }`}
           >
             <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all">
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#d7193f]/10 to-[#d7193f]/5 flex items-center justify-center mb-4">
                 <Globe size={22} className="text-[#d7193f]" />
               </div>
-              <h3 className="text-xl font-bold text-[#0f0f1a] mb-3 font-['Playfair_Display',serif]">Our Vision</h3>
+              <h3 className="text-xl font-bold text-[#0f0f1a] mb-3 font-sans">
+                Our Vision
+              </h3>
               <p className="text-gray-600 text-sm leading-relaxed">
-                To become a trusted corporate partner for entrepreneurs and international businesses by 
-                delivering seamless business setup and professional corporate solutions across the UAE.
+                To become a trusted corporate partner for entrepreneurs and
+                international businesses by delivering seamless business setup
+                and professional corporate solutions across the UAE.
               </p>
             </div>
             <div className="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all">
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#d7193f]/10 to-[#d7193f]/5 flex items-center justify-center mb-4">
                 <Award size={22} className="text-[#d7193f]" />
               </div>
-              <h3 className="text-xl font-bold text-[#0f0f1a] mb-3 font-['Playfair_Display',serif]">Our Mission</h3>
+              <h3 className="text-xl font-bold text-[#0f0f1a] mb-3 font-sans">
+                Our Mission
+              </h3>
               <p className="text-gray-600 text-sm leading-relaxed">
-                Our mission is to simplify company formation and business operations in Dubai through 
-                expert consultation, transparent processes, and reliable end-to-end support services.
+                Our mission is to simplify company formation and business
+                operations in Dubai through expert consultation, transparent
+                processes, and reliable end-to-end support services.
               </p>
             </div>
           </div>
@@ -367,19 +469,22 @@ export default function About() {
 
       {/* ========== WHY CHOOSE US ========== */}
       <section className="py-16 md:py-20 bg-white">
-        <div className="max-w-[1100px] mx-auto px-5 md:px-8">
+        <div className="max-w-[1280px] mx-auto px-5 md:px-8">
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 mb-3">
               <div className="w-8 h-[2px] bg-[#d7193f]/40" />
-              <span className="text-[10px] font-semibold tracking-[2px] uppercase text-[#d7193f]">WHY CHOOSE US</span>
+              <span className="text-[10px] font-semibold tracking-[2px] uppercase text-[#d7193f]">
+                WHY CHOOSE US
+              </span>
               <div className="w-8 h-[2px] bg-[#d7193f]/40" />
             </div>
-            <h2 className="font-['Playfair_Display',serif] text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a] mb-3">
+            <h2 className="font-sans text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a] mb-3">
               Why Businesses Trust EzzyBiz
             </h2>
             <p className="text-gray-500 text-sm max-w-2xl mx-auto">
-              We help entrepreneurs establish their businesses in Dubai with professional guidance, 
-              fast approvals, and customized corporate solutions designed for long-term growth.
+              We help entrepreneurs establish their businesses in Dubai with
+              professional guidance, fast approvals, and customized corporate
+              solutions designed for long-term growth.
             </p>
           </div>
 
@@ -393,20 +498,24 @@ export default function About() {
 
       {/* ========== SERVICES OVERVIEW ========== */}
       <section className="py-16 bg-gradient-to-br from-[#fef8f9] to-white">
-        <div className="max-w-[1100px] mx-auto px-5 md:px-8">
+        <div className="max-w-[1280px] mx-auto px-5 md:px-8">
           <div
             ref={servicesRef}
             className={`transition-all duration-600 ${
-              servicesVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              servicesVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-8"
             }`}
           >
             <div className="text-center mb-10">
               <div className="inline-flex items-center gap-2 mb-3">
                 <div className="w-8 h-[2px] bg-[#d7193f]/40" />
-                <span className="text-[10px] font-semibold tracking-[2px] uppercase text-[#d7193f]">OUR SERVICES</span>
+                <span className="text-[10px] font-semibold tracking-[2px] uppercase text-[#d7193f]">
+                  OUR SERVICES
+                </span>
                 <div className="w-8 h-[2px] bg-[#d7193f]/40" />
               </div>
-              <h2 className="font-['Playfair_Display',serif] text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a]">
+              <h2 className="font-sans text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a]">
                 Complete Business Setup Solutions In Dubai
               </h2>
             </div>
@@ -426,16 +535,20 @@ export default function About() {
           <div
             ref={processRef}
             className={`transition-all duration-600 ${
-              processVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              processVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-8"
             }`}
           >
             <div className="text-center mb-10">
               <div className="inline-flex items-center gap-2 mb-3">
                 <div className="w-8 h-[2px] bg-[#d7193f]/40" />
-                <span className="text-[10px] font-semibold tracking-[2px] uppercase text-[#d7193f]">OUR PROCESS</span>
+                <span className="text-[10px] font-semibold tracking-[2px] uppercase text-[#d7193f]">
+                  OUR PROCESS
+                </span>
                 <div className="w-8 h-[2px] bg-[#d7193f]/40" />
               </div>
-              <h2 className="font-['Playfair_Display',serif] text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a]">
+              <h2 className="font-sans text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a]">
                 Simple Business Setup Process In UAE
               </h2>
             </div>
@@ -451,21 +564,27 @@ export default function About() {
 
       {/* ========== CLIENT TESTIMONIALS ========== */}
       <section className="py-16 bg-gradient-to-br from-[#fef8f9] to-white">
-        <div className="max-w-[1100px] mx-auto px-5 md:px-8">
+        <div className="max-w-[1280px] mx-auto px-5 md:px-8">
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 mb-3">
               <div className="w-8 h-[2px] bg-[#d7193f]/40" />
-              <span className="text-[10px] font-semibold tracking-[2px] uppercase text-[#d7193f]">CLIENT TESTIMONIALS</span>
+              <span className="text-[10px] font-semibold tracking-[2px] uppercase text-[#d7193f]">
+                CLIENT TESTIMONIALS
+              </span>
               <div className="w-8 h-[2px] bg-[#d7193f]/40" />
             </div>
-            <h2 className="font-['Playfair_Display',serif] text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a]">
+            <h2 className="font-sans text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a]">
               What Our Clients Say
             </h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
             {TESTIMONIALS.map((testimonial, idx) => (
-              <TestimonialCard key={idx} testimonial={testimonial} index={idx} />
+              <TestimonialCard
+                key={idx}
+                testimonial={testimonial}
+                index={idx}
+              />
             ))}
           </div>
         </div>
@@ -473,7 +592,7 @@ export default function About() {
 
       {/* ========== FINAL CTA ========== */}
       <section className="py-16 md:py-20 bg-white">
-        <div className="max-w-[1100px] mx-auto px-5 md:px-8">
+        <div className="max-w-[1280px] mx-auto px-5 md:px-8">
           <div
             ref={ctaRef}
             className={`bg-gradient-to-r from-[#0f0f1a] to-[#1a1a2e] rounded-2xl p-8 md:p-12 relative overflow-hidden transition-all duration-600 ${
@@ -485,18 +604,29 @@ export default function About() {
             <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#e8718a]/10 rounded-full blur-3xl" />
 
             <div className="relative z-10 text-center">
-              <h2 className="font-['Playfair_Display',serif] text-[clamp(24px,4vw,34px)] font-bold text-white mb-3">
+              <h2 className="font-sans text-[clamp(24px,4vw,34px)] font-bold text-white mb-3">
                 Ready To Start Your Business In Dubai?
               </h2>
               <p className="text-white/70 text-sm mb-8 max-w-lg mx-auto">
-                Partner with EzzyBiz for professional business setup, corporate services, 
-                and reliable company formation solutions across the UAE.
+                Partner with EzzyBiz for professional business setup, corporate
+                services, and reliable company formation solutions across the
+                UAE.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/contact" className="group flex items-center justify-center gap-2 bg-gradient-to-r from-[#d7193f] to-[#b81236] text-white px-7 py-3 rounded-lg text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-[#d7193f]/30 hover:scale-105 no-underline">
-                  Get Free Consultation <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                <Link
+                  to="/contact"
+                  className="group flex items-center justify-center gap-2 bg-gradient-to-r from-[#d7193f] to-[#b81236] text-white px-7 py-3 rounded-lg text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-[#d7193f]/30 hover:scale-105 no-underline"
+                >
+                  Get Free Consultation{" "}
+                  <ArrowRight
+                    size={14}
+                    className="group-hover:translate-x-1 transition-transform"
+                  />
                 </Link>
-                <Link to="/contact" className="flex items-center justify-center gap-2 border border-white/30 text-white px-7 py-3 rounded-lg text-sm font-semibold transition-all duration-300 hover:bg-white/10 hover:border-white/50 no-underline">
+                <Link
+                  to="/contact"
+                  className="flex items-center justify-center gap-2 border border-white/30 text-white px-7 py-3 rounded-lg text-sm font-semibold transition-all duration-300 hover:bg-white/10 hover:border-white/50 no-underline"
+                >
                   <Phone size={14} /> Contact Our Team
                 </Link>
               </div>

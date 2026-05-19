@@ -33,7 +33,11 @@ const socialLinks = [
   { icon: <FaYoutube />, label: "YouTube", href: "#" },
 ];
 
-const bottomLinks = ["Privacy Policy", "Terms & Conditions", "Cookie Policy"];
+const bottomLinks = [
+  { label: "Privacy Policy", to: "/privacy-policy" },
+  { label: "Terms & Conditions", to: "/terms-conditions" },
+  { label: "Cookie Policy", to: "/cookie-policy" }
+];
 
 const BuildingIcon = ({ size = 20 }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none"
@@ -73,10 +77,10 @@ export default function Footer() {
   return (
     <footer className="bg-[#0A0A0A] border-t border-white/[0.07]">
 
-      <style>{`@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@300;400;500;600&display=swap'); footer { font-family: 'DM Sans', sans-serif; }`}</style>
+      <style>{`footer { font-family: 'Outfit', sans-serif; }`}</style>
 
       {/* ══ MAIN 4-COLUMN GRID ══ */}
-      <div className="max-w-[1240px] mx-auto px-5 md:px-10">
+      <div className="max-w-[1280px] mx-auto px-5 md:px-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1.5fr] gap-10 lg:gap-14 py-16 lg:py-20">
 
           {/* ── COL 1: Brand ── */}
@@ -186,20 +190,23 @@ export default function Footer() {
       </div>
 
       {/* ══ DIVIDER ══ */}
-      <div className="max-w-[1240px] mx-auto px-5 md:px-10">
+      <div className="max-w-[1280px] mx-auto px-5 md:px-10">
         <div className="h-px bg-white/[0.06]" />
       </div>
 
       {/* ══ BOTTOM BAR ══ */}
-      <div className="max-w-[1240px] mx-auto px-5 md:px-10">
+      <div className="max-w-[1280px] mx-auto px-5 md:px-10">
         <div className="flex flex-wrap items-center justify-between gap-3 py-5">
 
           <div className="flex flex-col gap-1">
             <span className="text-[12.5px] text-white/25">
               © 2026 EzzyBiz. All Rights Reserved.
             </span>
-            <span className="text-[11px] text-white/15 tracking-[0.04em]">
-              Trusted Corporate Business Setup Partner In Dubai & UAE
+            
+          </div>
+          <div>
+            <span className=" text-white/15 tracking-[0.04em] flex items-center gap-2">
+              Design & Developed By: <a href="https://codecrafter.co.in/" target="_blank"><img className="h-8" src="https://kashtkart.netlify.app/assets/ccws-l-lAMUu5.png" /></a>
             </span>
           </div>
 
@@ -207,8 +214,8 @@ export default function Footer() {
             {bottomLinks.map((l, i) => (
               <span key={i} className="flex items-center gap-1.5">
                 {i > 0 && <span className="text-white/15 text-[9px]">•</span>}
-                <Link to="#" className="text-[12px] text-white/25 hover:text-red-500 transition-colors duration-300">
-                  {l}
+                <Link to={l.to} className="text-[12px] text-white/25 hover:text-red-500 transition-colors duration-300">
+                  {l.label}
                 </Link>
               </span>
             ))}

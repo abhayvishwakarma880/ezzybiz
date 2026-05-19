@@ -81,7 +81,7 @@ const faqs = [
 const Badge = ({ text, theme = "light" }) => (
   <div className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full border ${theme === 'dark' ? 'bg-[#d7193f]/10 border-[#d7193f]/20' : 'bg-[#d7193f]/5 border-[#d7193f]/10'} mb-6`}>
     <span className="w-1.5 h-1.5 rounded-full bg-[#d7193f] animate-pulse" />
-    <span className="text-[10px] font-bold tracking-[1.5px] uppercase text-[#d7193f] font-['Inter',sans-serif]">{text}</span>
+    <span className="text-[10px] font-bold tracking-[1.5px] uppercase text-[#d7193f] font-sans">{text}</span>
   </div>
 );
 
@@ -94,14 +94,14 @@ function PackagesSection() {
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#d7193f]/5 rounded-full blur-[100px] pointer-events-none transform-gpu" />
       <div className="absolute inset-0 bg-[linear-gradient(rgba(215,25,63,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(215,25,63,0.02)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
       
-      <div className="max-w-[1240px] mx-auto px-6 md:px-10 relative z-10">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-10 relative z-10">
         <div className={`text-center max-w-2xl mx-auto mb-16 transition-all duration-[700ms] ease-out will-change-transform ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           {/* <Badge text="Business Packages" theme="light" /> */}
-          <h2 className="font-['Playfair_Display',serif] text-4xl md:text-5xl font-bold text-[#0f0f1a] mb-5 leading-tight">
+          <h2 className="font-sans text-4xl md:text-5xl font-bold text-[#0f0f1a] mb-5 leading-tight">
             Affordable Business Setup <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d7193f] to-[#e8718a]">Solutions In Dubai</span>
           </h2>
-          <p className="font-['Inter',sans-serif] text-gray-600 leading-relaxed">
+          <p className="font-sans text-gray-600 leading-relaxed">
             Choose the right business setup package tailored to your goals, industry, and investment plans. EzzyBiz offers flexible and transparent corporate solutions for entrepreneurs, startups, and international investors across the UAE.
           </p>
         </div>
@@ -121,20 +121,20 @@ function PackagesSection() {
                 <div className={`w-14 h-14 rounded-xl flex items-center justify-center text-2xl mb-5 transition-colors ${pkg.featured ? "bg-[#d7193f]/10 text-[#d7193f] border border-[#d7193f]/20" : "bg-[#d7193f]/5 text-[#d7193f] border border-[#d7193f]/10"}`}>
                   {pkg.icon}
                 </div>
-                <h3 className="font-['Playfair_Display',serif] text-2xl font-bold text-[#0f0f1a] mb-2">{pkg.name}</h3>
-                <p className="font-['Inter',sans-serif] text-xs text-gray-500">{pkg.bestFor}</p>
+                <h3 className="font-sans text-2xl font-bold text-[#0f0f1a] mb-2">{pkg.name}</h3>
+                <p className="font-sans text-xs text-gray-500">{pkg.bestFor}</p>
               </div>
               
               <ul className="flex flex-col gap-3.5 mb-8 flex-1">
                 {pkg.features.map((f, j) => (
-                  <li key={j} className="flex items-start gap-3 font-['Inter',sans-serif] text-sm text-gray-600">
+                  <li key={j} className="flex items-start gap-3 font-sans text-sm text-gray-600">
                     <FaCheckCircle className={`mt-0.5 text-[15px] shrink-0 ${pkg.featured ? "text-[#d7193f]" : "text-gray-400"}`} />
                     <span className="leading-snug">{f}</span>
                   </li>
                 ))}
               </ul>
               
-              <Link to="/contact" className={`w-full py-3.5 rounded-xl font-['Inter',sans-serif] font-semibold text-sm transition-all duration-300 flex items-center justify-center no-underline ${pkg.featured ? "bg-gradient-to-r from-[#d7193f] to-[#b81236] text-white shadow-[0_8px_20px_rgba(215,25,63,0.25)] hover:shadow-[0_12px_25px_rgba(215,25,63,0.4)] hover:-translate-y-1" : "bg-transparent border border-gray-200 text-[#0f0f1a] hover:bg-[#d7193f]/5 hover:border-[#d7193f]/30 hover:text-[#d7193f]"}`}>
+              <Link to="/contact" className={`w-full py-3.5 rounded-xl font-sans font-semibold text-sm transition-all duration-300 flex items-center justify-center no-underline ${pkg.featured ? "bg-gradient-to-r from-[#d7193f] to-[#b81236] text-white shadow-[0_8px_20px_rgba(215,25,63,0.25)] hover:shadow-[0_12px_25px_rgba(215,25,63,0.4)] hover:-translate-y-1" : "bg-transparent border border-gray-200 text-[#0f0f1a] hover:bg-[#d7193f]/5 hover:border-[#d7193f]/30 hover:text-[#d7193f]"}`}>
                 {pkg.cta} &rarr;
               </Link>
             </div>
@@ -152,14 +152,14 @@ function IndustriesSection() {
     <section className="py-20 md:py-24 bg-[#0f0f1a] relative overflow-hidden" ref={ref}>
       <div className="absolute inset-0 bg-[linear-gradient(rgba(215,25,63,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(215,25,63,0.04)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
       
-      <div className="max-w-[1240px] mx-auto px-6 md:px-10 relative z-10">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-10 relative z-10">
         <div className={`text-center max-w-2xl mx-auto mb-16 transition-all duration-[700ms] ease-out will-change-transform ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           {/* <Badge text="Industries We Serve" theme="dark" /> */}
-          <h2 className="font-['Playfair_Display',serif] text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">
+          <h2 className="font-sans text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">
             Business Solutions For <br />
             <span className="text-[#d7193f]">Multiple Industries</span>
           </h2>
-          <p className="font-['Inter',sans-serif] text-gray-400 leading-relaxed">
+          <p className="font-sans text-gray-400 leading-relaxed">
             EzzyBiz provides tailored company formation and corporate solutions for businesses across multiple industries in the UAE market.
           </p>
         </div>
@@ -171,8 +171,8 @@ function IndustriesSection() {
               <div className="w-12 h-12 rounded-xl bg-[#d7193f]/10 border border-[#d7193f]/20 flex items-center justify-center text-[#d7193f] text-xl mb-5 group-hover:bg-[#d7193f]/20 transition-colors">
                 {ind.icon}
               </div>
-              <h4 className="font-['Playfair_Display',serif] text-xl font-bold text-white mb-3 group-hover:text-[#d7193f] transition-colors">{ind.title}</h4>
-              <p className="font-['Inter',sans-serif] text-sm text-gray-400 leading-relaxed mb-4">{ind.desc}</p>
+              <h4 className="font-sans text-xl font-bold text-white mb-3 group-hover:text-[#d7193f] transition-colors">{ind.title}</h4>
+              <p className="font-sans text-sm text-gray-400 leading-relaxed mb-4">{ind.desc}</p>
               <div className="text-[#d7193f] font-bold text-lg opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">&rarr;</div>
             </div>
           ))}
@@ -187,14 +187,14 @@ function TestimonialsSection() {
   const [ref, inView] = useInView(0.1);
   return (
     <section className="py-20 md:py-24 bg-[#f9fafb] relative overflow-hidden" ref={ref}>
-      <div className="max-w-[1240px] mx-auto px-6 md:px-10 relative z-10">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-10 relative z-10">
         <div className={`text-center max-w-2xl mx-auto mb-16 transition-all duration-[700ms] ease-out will-change-transform ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           {/* <Badge text="Client Testimonials" theme="light" /> */}
-          <h2 className="font-['Playfair_Display',serif] text-4xl md:text-5xl font-bold text-[#0f0f1a] mb-5 leading-tight">
+          <h2 className="font-sans text-4xl md:text-5xl font-bold text-[#0f0f1a] mb-5 leading-tight">
             Trusted By Entrepreneurs <br />
             <span className="text-[#d7193f]">& Global Investors</span>
           </h2>
-          <p className="font-['Inter',sans-serif] text-gray-600 leading-relaxed">
+          <p className="font-sans text-gray-600 leading-relaxed">
             Our clients trust EzzyBiz for reliable business setup, professional corporate services, and smooth company formation solutions across Dubai and the UAE.
           </p>
         </div>
@@ -204,14 +204,14 @@ function TestimonialsSection() {
             <div key={i} className="p-8 bg-white border border-gray-200 rounded-2xl flex flex-col gap-5 transition-all duration-300 hover:border-[#d7193f]/30 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(215,25,63,0.05)] will-change-transform"
                  style={{ opacity: inView ? 1 : 0, transform: inView ? "translateY(0)" : "translateY(35px)", transition: `all 0.7s ease-out ${0.15 + i * 0.15}s` }}>
               <div className="text-[#d7193f] text-[15px] tracking-[3px]">★★★★★</div>
-              <p className="font-['Inter',sans-serif] text-[15px] text-gray-600 italic leading-relaxed flex-1">"{t.review}"</p>
+              <p className="font-sans text-[15px] text-gray-600 italic leading-relaxed flex-1">"{t.review}"</p>
               <div className="flex items-center gap-4 pt-5 border-t border-gray-100 mt-2">
-                <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[#d7193f] to-[#b81236] flex items-center justify-center font-['Playfair_Display',serif] font-bold text-white shadow-lg shrink-0">
+                <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[#d7193f] to-[#b81236] flex items-center justify-center font-sans font-bold text-white shadow-lg shrink-0">
                   {t.initials}
                 </div>
                 <div>
-                  <div className="font-['Inter',sans-serif] font-bold text-[14px] text-[#0f0f1a]">{t.name}</div>
-                  <div className="font-['Inter',sans-serif] text-[12px] text-gray-500 mt-0.5">{t.company}</div>
+                  <div className="font-sans font-bold text-[14px] text-[#0f0f1a]">{t.name}</div>
+                  <div className="font-sans text-[12px] text-gray-500 mt-0.5">{t.company}</div>
                 </div>
               </div>
             </div>
@@ -231,7 +231,7 @@ function FAQSection() {
       <div className="max-w-[800px] mx-auto px-6 md:px-10 relative z-10">
         <div className={`text-center mb-16 transition-all duration-[700ms] ease-out will-change-transform ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           {/* <Badge text="Frequently Asked Questions" theme="dark" /> */}
-          <h2 className="font-['Playfair_Display',serif] text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">
+          <h2 className="font-sans text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">
             Common Questions About <br />
             <span className="text-[#d7193f]">Business Setup In Dubai</span>
           </h2>
@@ -242,13 +242,13 @@ function FAQSection() {
             <div key={i} className={`rounded-xl border transition-all duration-300 will-change-transform ${open === i ? "border-[#d7193f] bg-[#d7193f]/5 shadow-sm" : "border-white/10 bg-[#0f0f1a] hover:border-[#d7193f]/30"}`}
                  style={{ opacity: inView ? 1 : 0, transform: inView ? "translateX(0)" : "translateX(-20px)", transition: `all 0.6s ease-out ${0.1 + i * 0.1}s` }}>
               <button className="w-full flex items-center justify-between p-5 md:p-6 text-left" onClick={() => setOpen(open === i ? null : i)}>
-                <span className={`font-['Inter',sans-serif] font-semibold text-[15px] md:text-base pr-4 transition-colors ${open === i ? "text-[#d7193f]" : "text-white"}`}>{faq.q}</span>
+                <span className={`font-sans font-semibold text-[15px] md:text-base pr-4 transition-colors ${open === i ? "text-[#d7193f]" : "text-white"}`}>{faq.q}</span>
                 <span className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-all duration-300 ${open === i ? "bg-[#d7193f] text-white" : "bg-[#d7193f]/10 text-[#d7193f] border border-[#d7193f]/20"}`}>
                   {open === i ? <FiMinus size={16} /> : <FiPlus size={16} />}
                 </span>
               </button>
               <div className={`overflow-hidden transition-all duration-[400ms] ease-out ${open === i ? "max-h-[200px] opacity-100" : "max-h-0 opacity-0"}`}>
-                <div className="px-5 md:px-6 pb-6 pt-0 font-['Inter',sans-serif] text-[14.5px] text-gray-400 leading-relaxed">
+                <div className="px-5 md:px-6 pb-6 pt-0 font-sans text-[14.5px] text-gray-400 leading-relaxed">
                   {faq.a}
                 </div>
               </div>
@@ -273,28 +273,28 @@ function FinalCTASection() {
         <div className={`transition-all duration-[800ms] ease-out will-change-transform ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           <div className="inline-flex items-center gap-3 mb-8">
             <span className="w-8 h-[1px] bg-[#d7193f]/40" />
-            <span className="text-[11px] font-bold tracking-[3px] uppercase text-[#d7193f] font-['Inter',sans-serif]">Start Today</span>
+            <span className="text-[11px] font-bold tracking-[3px] uppercase text-[#d7193f] font-sans">Start Today</span>
             <span className="w-8 h-[1px] bg-[#d7193f]/40" />
           </div>
           
-          <h2 className="font-['Playfair_Display',serif] text-[clamp(36px,5vw,64px)] font-bold text-[#0f0f1a] mb-6 leading-[1.1]">
-            Start Your Business Journey <br className="hidden md:block" />In <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d7193f] to-[#e8718a]">Dubai</span> Today
+          <h2 className="font-sans text-[clamp(36px,5vw,64px)] font-bold text-[#0f0f1a] mb-6 leading-[1.1]">
+            Start Your Business Journey In <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d7193f] to-[#e8718a]">Dubai</span> Today
           </h2>
           
-          <p className="font-['Inter',sans-serif] text-gray-600 text-[15px] md:text-lg mb-10 max-w-[600px] mx-auto leading-relaxed">
+          <p className="font-sans text-gray-600 text-[15px] md:text-lg mb-10 max-w-[600px] mx-auto leading-relaxed">
             Partner with EzzyBiz for reliable company formation, corporate services, and professional business solutions tailored for the UAE market.
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-            <Link to="/contact" className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-[#d7193f] to-[#b81236] text-white font-['Inter',sans-serif] font-bold text-[15px] flex items-center justify-center gap-3 shadow-[0_10px_30px_rgba(215,25,63,0.3)] hover:shadow-[0_15px_40px_rgba(215,25,63,0.45)] hover:-translate-y-1 transition-all duration-300 no-underline">
+            <Link to="/contact" className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-[#d7193f] to-[#b81236] text-white font-sans font-bold text-[15px] flex items-center justify-center gap-3 shadow-[0_10px_30px_rgba(215,25,63,0.3)] hover:shadow-[0_15px_40px_rgba(215,25,63,0.45)] hover:-translate-y-1 transition-all duration-300 no-underline">
               <FaRocket /> Get Free Consultation
             </Link>
-            <a href="tel:+971527069469" className="w-full sm:w-auto px-8 py-4 rounded-xl bg-white border border-gray-200 text-[#0f0f1a] font-['Inter',sans-serif] font-semibold text-[15px] flex items-center justify-center gap-3 hover:bg-[#d7193f]/5 hover:border-[#d7193f]/30 hover:text-[#d7193f] transition-all duration-300 no-underline cursor-pointer">
+            <a href="tel:+971527069469" className="w-full sm:w-auto px-8 py-4 rounded-xl bg-white border border-gray-200 text-[#0f0f1a] font-sans font-semibold text-[15px] flex items-center justify-center gap-3 hover:bg-[#d7193f]/5 hover:border-[#d7193f]/30 hover:text-[#d7193f] transition-all duration-300 no-underline cursor-pointer">
               <FaHandshake /> Talk To Our Experts
             </a>
           </div>
           
-          <p className="font-['Inter',sans-serif] text-[12.5px] text-gray-500 tracking-wide">Trusted by startups, entrepreneurs, and global investors across the UAE.</p>
+          <p className="font-sans text-[12.5px] text-gray-500 tracking-wide">Trusted by startups, entrepreneurs, and global investors across the UAE.</p>
         </div>
       </div>
     </section>
@@ -305,7 +305,7 @@ function FinalCTASection() {
 export default function PackageToCTA() {
   return (
     <>
-      <PackagesSection />
+      {/* <PackagesSection /> */}
       <IndustriesSection />
       <TestimonialsSection />
       <FAQSection />
