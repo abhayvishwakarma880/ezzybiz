@@ -85,26 +85,23 @@ function StatCard({ number, label, index, visible }) {
   const count = useCountUp(number, 1600, visible);
   return (
     <div
-      className="relative p-6 rounded-xl border transition-all duration-300 hover:-translate-y-1 hover:border-[#d7193f] hover:shadow-[0_8px_32px_rgba(215,25,63,0.12)] group"
+      className="relative p-4 rounded-xl border border-white/[0.08] bg-gradient-to-br from-white/[0.03] to-transparent backdrop-blur-[10px] transition-all duration-300 hover:-translate-y-1 hover:border-[#d7193f]/40 hover:from-[#d7193f]/12 hover:to-transparent hover:shadow-[0_8px_32px_rgba(215,25,63,0.15)] group"
       style={{
-        background: "rgba(255,255,255,0.03)",
-        border: "1px solid rgba(255,255,255,0.08)",
-        backdropFilter: "blur(10px)",
         transitionDelay: `${index * 80}ms`,
       }}
     >
       <div className="absolute top-0 left-5 right-5 h-[2px] rounded-b-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left bg-[#d7193f]" />
       <div
-        className="font-bold leading-none mb-2 text-white"
+        className="font-bold leading-none mb-1 text-white"
         style={{
           fontFamily: "'Outfit', sans-serif",
-          fontSize: "clamp(30px, 3.5vw, 44px)",
+          fontSize: "clamp(24px, 3vw, 34px)",
         }}
       >
         {count}
       </div>
       <div
-        className="text-[12.5px] tracking-[0.05em] font-medium"
+        className="text-[11.5px] tracking-[0.05em] font-medium"
         style={{ color: "rgba(255,255,255,0.5)" }}
       >
         {label}
@@ -116,27 +113,23 @@ function StatCard({ number, label, index, visible }) {
 function FeatureCard({ icon: Icon, title, description, index }) {
   return (
     <div
-      className="group flex flex-col h-full p-6 rounded-xl border transition-all duration-300 hover:-translate-y-1 hover:border-[#d7193f] hover:shadow-[0_8px_32px_rgba(215,25,63,0.1)]"
-      style={{
-        background: "rgba(255,255,255,0.03)",
-        border: "1px solid rgba(255,255,255,0.08)",
-        backdropFilter: "blur(10px)",
-      }}
+      className="group flex flex-col h-full p-[18px] rounded-xl border border-white/[0.08] bg-gradient-to-br from-white/[0.03] to-transparent backdrop-blur-[10px] transition-all duration-300 hover:-translate-y-1 hover:border-[#d7193f]/40 hover:from-[#d7193f]/12 hover:to-transparent hover:shadow-[0_8px_32px_rgba(215,25,63,0.15)]"
+      style={{ animationDelay: `${index * 80}ms` }}
     >
       {/* Top Row: Icon and Title */}
-      <div className="flex items-center gap-4 mb-3.5">
+      <div className="flex items-center gap-3 mb-2">
         <div
-          className="shrink-0 w-[46px] h-[46px] rounded-lg flex items-center justify-center transition-all duration-300 group-hover:bg-[#d7193f] group-hover:shadow-[0_6px_20px_rgba(215,25,63,0.3)]"
+          className="shrink-0 w-[36px] h-[36px] rounded-md flex items-center justify-center transition-all duration-300 group-hover:bg-[#d7193f] group-hover:shadow-[0_6px_20px_rgba(215,25,63,0.3)]"
           style={{ background: "rgba(215,25,63,0.1)" }}
         >
           <Icon
-            size={22}
+            size={18}
             className="text-[#d7193f] transition-colors duration-300 group-hover:text-white"
             strokeWidth={1.6}
           />
         </div>
         <h4
-          className="text-white font-bold text-[16px] leading-[1.3] group-hover:text-[#e8718a] transition-colors duration-200"
+          className="text-white font-bold text-[14.5px] leading-[1.3] group-hover:text-[#e8718a] transition-colors duration-200"
           style={{ fontFamily: "'Outfit', sans-serif" }}
         >
           {title}
@@ -145,9 +138,9 @@ function FeatureCard({ icon: Icon, title, description, index }) {
 
       {/* Description */}
       <p
-        className="text-[13.5px] leading-[1.8]"
+        className="text-[12.5px] leading-[1.65]"
         style={{
-          color: "rgba(255,255,255,0.5)",
+          color: "rgba(255,255,255,0.45)",
           fontFamily: "'Outfit', sans-serif",
         }}
       >
@@ -179,7 +172,7 @@ export default function WhyChooseUs() {
       `}</style>
 
       <section
-        className="relative py-24 overflow-hidden"
+        className="relative py-[60px] overflow-hidden"
         style={{
           background: "#0a0a0a",
           fontFamily: "'Outfit', sans-serif",
@@ -213,13 +206,13 @@ export default function WhyChooseUs() {
 
         <div className="max-w-[1280px] mx-auto px-6 md:px-16 relative z-10">
           {/* ── TWO-COLUMN LAYOUT ── */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 xl:gap-20 items-stretch">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-14 items-stretch">
             {/* ─── LEFT COLUMN ─── */}
             <div className="flex flex-col h-full">
               {/* Badge */}
-              <div className="inline-flex items-center gap-3 mb-5">
+              <div className="inline-flex items-center gap-3 mb-4">
                 <span className="h-px w-8 bg-[#d7193f]" />
-                <span className="text-[#d7193f] text-[11.5px] font-bold tracking-[3.5px] uppercase">
+                <span className="text-[#d7193f] text-[11px] font-bold tracking-[3.5px] uppercase">
                   Why Choose Us
                 </span>
                 <span className="h-px w-8 bg-[#d7193f]" />
@@ -227,10 +220,10 @@ export default function WhyChooseUs() {
 
               {/* Heading */}
               <h2
-                className="text-white font-bold leading-[1.15] mb-5"
+                className="text-white font-bold leading-[1.15] mb-3"
                 style={{
                   fontFamily: "'Outfit', sans-serif",
-                  fontSize: "clamp(30px, 4vw, 48px)",
+                  fontSize: "clamp(26px, 3.5vw, 38px)",
                 }}
               >
                 Why Choose{" "}
@@ -240,7 +233,7 @@ export default function WhyChooseUs() {
               </h2>
 
               {/* Divider */}
-              <div className="flex items-center gap-2 mb-5">
+              <div className="flex items-center gap-2 mb-4">
                 <span className="h-[2px] w-10 bg-[#d7193f] rounded-full" />
                 <span className="w-[5px] h-[5px] rounded-full bg-[#d7193f]" />
                 <span className="h-[2px] w-10 bg-[#d7193f] rounded-full" />
@@ -248,7 +241,7 @@ export default function WhyChooseUs() {
 
               {/* Description */}
               <p
-                className="text-[15px] leading-[1.9] mb-10"
+                className="text-[13.5px] leading-[1.75] mb-6"
                 style={{ color: "rgba(255,255,255,0.55)" }}
               >
                 EzzyBiz delivers reliable and professional corporate solutions
@@ -267,7 +260,7 @@ export default function WhyChooseUs() {
             </div>
 
             {/* ─── RIGHT COLUMN ─── */}
-            <div ref={statsRef} className="flex flex-col gap-6 lg:pt-14 h-full">
+            <div ref={statsRef} className="flex flex-col gap-4 lg:pt-6 h-full">
               {/* Stats Grid */}
               <div className="grid grid-cols-2 gap-4">
                 {STATS.map((stat, idx) => (
@@ -282,7 +275,7 @@ export default function WhyChooseUs() {
 
               {/* Highlight Card */}
               <div
-                className="relative rounded-xl p-8 overflow-hidden"
+                className="relative rounded-xl p-5 overflow-hidden"
                 style={{
                   background:
                     "linear-gradient(135deg, rgba(215,25,63,0.12), rgba(215,25,63,0.04))",
@@ -300,7 +293,7 @@ export default function WhyChooseUs() {
                 <div className="relative z-10">
                   {/* Quote mark */}
                   <div
-                    className="text-[72px] leading-none text-[#d7193f] mb-2 opacity-30 select-none"
+                    className="text-[48px] leading-none text-[#d7193f] mb-1 opacity-30 select-none"
                     style={{
                       fontFamily: "'Outfit', sans-serif",
                     }}
@@ -308,10 +301,9 @@ export default function WhyChooseUs() {
                     "
                   </div>
                   <p
-                    className="text-white text-[16px] leading-[1.85] mb-6 font-medium"
+                    className="text-white text-[13.5px] leading-[1.7] mb-4 font-medium"
                     style={{
                       fontFamily: "'Outfit', sans-serif",
-                      fontSize: "clamp(15px, 1.4vw, 18px)",
                     }}
                   >
                     Helping entrepreneurs and global investors establish
@@ -322,9 +314,9 @@ export default function WhyChooseUs() {
                   {/* CTA Button */}
                   <Link
                     to="/contact"
-                    className="inline-flex items-center gap-[10px] h-[52px] px-7 bg-[#d7193f] text-white font-bold text-[13px] tracking-[0.07em] uppercase rounded-sm no-underline transition-all duration-300 hover:-translate-y-[2px] hover:bg-[#b8162f] hover:shadow-[0_10px_32px_rgba(215,25,63,0.38)]"
+                    className="inline-flex items-center gap-[8px] h-[44px] px-5 bg-[#d7193f] text-white font-bold text-[11.5px] tracking-[0.07em] uppercase rounded-sm no-underline transition-all duration-300 hover:-translate-y-[2px] hover:bg-[#b8162f] hover:shadow-[0_10px_32px_rgba(215,25,63,0.38)]"
                   >
-                    <MessageCircle size={15} />
+                    <MessageCircle size={14} />
                     Book Free Consultation
                   </Link>
                 </div>

@@ -6,12 +6,12 @@ import {
   FiDollarSign as BadgeDollarSign,
   FiFile as ReceiptText,
   FiArrowRight as ArrowRight,
-  FiMessageCircle as MessageCircle
+  FiMessageCircle as MessageCircle,
 } from "react-icons/fi";
 import {
   MdBusiness as Building2,
   MdAccountBalance as Landmark,
-  MdPayments as Banknote
+  MdPayments as Banknote,
 } from "react-icons/md";
 
 const SERVICES = [
@@ -63,48 +63,44 @@ const SERVICES = [
     description:
       "Protect your brand identity in the UAE with complete trademark registration, intellectual property support, and legal documentation assistance.",
   },
-  {
-    icon: Banknote,
-    title: "Bank Account Assistance",
-    description:
-      "Get support for opening corporate and business bank accounts in the UAE with proper documentation, compliance guidance, and banking consultation.",
-  },
+  // {
+  //   icon: Banknote,
+  //   title: "Bank Account Assistance",
+  //   description:
+  //     "Get support for opening corporate and business bank accounts in the UAE with proper documentation, compliance guidance, and banking consultation.",
+  // },
 ];
 
 function ServiceCard({ icon: Icon, title, description, index }) {
   return (
     <div
-      className="group relative bg-white rounded-[18px] p-[35px] border border-[#ebebeb] transition-all duration-300 ease-out hover:-translate-y-[6px] hover:border-transparent hover:shadow-[0_20px_60px_rgba(0,0,0,0.15)] overflow-hidden"
+      className="group relative bg-white rounded-[18px] p-6 border border-[#ebebeb] transition-all duration-300 ease-out hover:-translate-y-[6px] hover:border-transparent hover:shadow-[0_20px_60px_rgba(0,0,0,0.15)] overflow-hidden"
       style={{ animationDelay: `${index * 80}ms` }}
     >
       {/* Black circle overlay expanding from bottom */}
       <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-24 h-24 bg-[#0a0a0a]/90 rounded-full scale-0 group-hover:scale-[15] transition-transform duration-2000 ease-[cubic-bezier(0.22,1,0.36,1)] z-0" />
 
-      {/* Top accent line - FULL WIDTH */}
-      <div className="absolute top-0 left-0 right-0 h-[3px] bg-[#d7193f] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left z-10" />
+      {/* Bottom accent line - ALWAYS visible, matches the business setup accent */}
+      <div className="absolute bottom-0 left-0 right-0 h-[6px] bg-gradient-to-r from-[#b81236] to-[#d7193f] transition-all duration-300 group-hover:h-[8px] z-10" />
 
       {/* Content wrapper to sit above the black overlay */}
       <div className="relative z-10">
         {/* Icon */}
-        <div className="w-[56px] h-[56px] rounded-xl bg-[#fff5f6] flex items-center justify-center mb-6 transition-all duration-500 group-hover:bg-[#d7193f] group-hover:shadow-[0_8px_24px_rgba(215,25,63,0.4)]">
+        <div className="w-[48px] h-[48px] rounded-xl bg-[#fff5f6] flex items-center justify-center mb-5 transition-all duration-500 group-hover:bg-[#d7193f] group-hover:shadow-[0_8px_24px_rgba(215,25,63,0.4)]">
           <Icon
-            size={26}
+            size={22}
             className="text-[#d7193f] transition-colors duration-500 group-hover:text-white"
             strokeWidth={1.6}
           />
         </div>
 
         {/* Title */}
-        <h3
-          className="text-[#0f0f1a] font-bold text-[18px] leading-[1.3] mb-3 transition-colors duration-500 group-hover:text-white font-serif"
-        >
+        <h3 className="text-[#0f0f1a] font-bold text-[16px] leading-[1.3] mb-2.5 transition-colors duration-500 group-hover:text-white font-serif">
           {title}
         </h3>
 
         {/* Description */}
-        <p
-          className="text-[#6b7280] text-[14px] leading-[1.85] mb-2 font-sans transition-colors duration-500 group-hover:text-white/70"
-        >
+        <p className="text-[#6b7280] text-[13px] leading-[1.7] mb-1 font-sans transition-colors duration-500 group-hover:text-white/70">
           {description}
         </p>
       </div>
@@ -115,13 +111,17 @@ function ServiceCard({ icon: Icon, title, description, index }) {
 export default function ServicesSection() {
   return (
     <>
-
       <section
-        className="py-[40px] relative overflow-hidden font-sans"
+        className="py-[15px] relative overflow-hidden font-sans"
         style={{
-          background: "linear-gradient(to bottom, #ffffff, #f8f8f8)",
+          background: "linear-gradient(to bottom, #fdfdfd, #f4f4f7)",
         }}
       >
+        {/* Cinematic Deep Crimson Glow / Sun Source Effect radiating from Top-Center */}
+        <div
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-[850px] h-[450px] bg-gradient-to-b from-[#b81236]/20 via-[#d7193f]/8 to-transparent rounded-full blur-[110px] pointer-events-none -translate-y-1/2 z-0"
+        />
+
         {/* Decorative background pattern */}
         <div
           className="absolute inset-0 opacity-[0.025] pointer-events-none"
@@ -135,14 +135,14 @@ export default function ServicesSection() {
         {/* Decorative red blob */}
         <div
           className="absolute -top-24 -right-24 w-[480px] h-[480px] rounded-full opacity-[0.04] pointer-events-none"
-          style={{ background: "radial-gradient(circle, #d7193f, transparent 70%)" }}
+          style={{
+            background: "radial-gradient(circle, #d7193f, transparent 70%)",
+          }}
         />
 
         <div className="max-w-[1280px] mx-auto px-6 md:px-16 relative z-10">
-
           {/* ── SECTION HEADER ── */}
           <div className="text-center mb-[72px]">
-
             {/* Badge */}
             <div className="inline-flex items-center gap-3 mb-5">
               <span className="h-px w-8 bg-[#d7193f]" />
@@ -177,15 +177,16 @@ export default function ServicesSection() {
               className="text-[#6b7280] text-[16px] leading-[1.9] mx-auto"
               style={{ maxWidth: "720px" }}
             >
-              EzzyBiz provides complete business setup and corporate solutions in Dubai
-              and across the UAE. From company formation and trade licenses to VAT
-              registration and PRO services, we help entrepreneurs, startups, and
-              international investors establish and grow their businesses with confidence.
+              EzzyBiz provides complete business setup and corporate solutions
+              in Dubai and across the UAE. From company formation and trade
+              licenses to VAT registration and PRO services, we help
+              entrepreneurs, startups, and international investors establish and
+              grow their businesses with confidence.
             </p>
           </div>
 
           {/* ── SERVICES GRID ── */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-20">
             {SERVICES.map((service, idx) => (
               <ServiceCard key={idx} {...service} index={idx} />
             ))}
@@ -250,7 +251,6 @@ export default function ServicesSection() {
               </div>
             </div>
           </div> */}
-
         </div>
       </section>
     </>

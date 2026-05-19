@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { FiClock, FiPhone, FiMail, FiChevronDown, FiMenu, FiX, FiMessageSquare } from "react-icons/fi";
-import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaWhatsapp, FaYoutube } from "react-icons/fa";
 
 const NAV_ITEMS = [
   { label: "Home", href: "#" },
@@ -13,19 +13,19 @@ const NAV_ITEMS = [
       { label: "Dubai Free Zone", href: "/dubaifreezone" },
       { label: "Sharjah Free Zone", href: "/sharjahfreezone" },
       { label: "Ajman Free Zone", href: "/ajmanfreezone" },
-      { label: "RAK Free Zone", href: "/rakfreezone" },
+      { label: "Ras Al Khaimah Free Zone", href: "/rakfreezone" },
     ],
   },
   {
     label: "Visa Services",
     dropdown: [
-      { label: "All visa service", href: "/allvisa" },
-      { label: "Golden visa", href: "/goldenvisa" },
-      { label: "ejar", href: "/ejari" },
+      { label: "All Visa Service", href: "/allvisa" },
+      { label: "Golden Visa", href: "/goldenvisa" },
     ],
   },
+  { label: "Ejari Services", href: "/ejari" },
   { label: "VAT Services", href: "/vat" },
-  { label: "Banking", href: "/banking" },
+  // { label: "Banking", href: "/banking" },
   { label: "Contact Us", href: "/contact" },
 ];
 
@@ -243,11 +243,13 @@ export default function Navbar() {
 
             {/* CTA Button */}
             <a
-              href="tel:+971527069469"
-              className="hidden lg:inline-flex items-center gap-[7px] bg-[#C8102E] text-white px-[22px] py-[11px] rounded font-bold text-[13px] tracking-[0.06em] no-underline uppercase shadow-[0_4px_16px_rgba(200,16,46,0.25)] transition-all duration-[220ms] ease-in-out hover:bg-[#a50d23] hover:shadow-[0_6px_24px_rgba(200,16,46,0.35)] hover:-translate-y-px whitespace-nowrap shrink-0 cursor-pointer" 
+              href="https://wa.me/971523177073?text=Hello%20EzzyBiz,%20I%20want%20business%20setup%20consultation."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden lg:inline-flex items-center gap-[7px] bg-[#05b40d] text-white px-[22px] py-[11px] rounded font-bold text-[13px] tracking-[0.06em] no-underline uppercase shadow-[0_4px_16px_rgba(200,16,46,0.25)] transition-all duration-[220ms] ease-in-out hover:bg-[#1d6a21] hover:shadow-[0_6px_24px_rgba(200,16,46,0.35)] hover:-translate-y-px whitespace-nowrap shrink-0 cursor-pointer" 
             >
-              <FiMessageSquare size={14} strokeWidth={2.5} />
-              Talk To Expert
+              <FaWhatsapp size={14} strokeWidth={2.5} />
+              Whatsapp
             </a>
 
             {/* Mobile Hamburger */}

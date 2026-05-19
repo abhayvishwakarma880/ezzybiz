@@ -248,7 +248,7 @@ export default function AboutSection() {
         </div>
 
         {/* Bottom CTA Strip */}
-        <div
+        {/* <div
           className={`mt-20 md:mt-28 bg-gradient-to-r from-[#0f0f1a] to-[#1a1a2e] rounded-2xl p-8 md:p-12 relative overflow-hidden transition-all duration-700 ${
             sectionInView ? "opacity-100 scale-100" : "opacity-0 scale-95"
           }`}
@@ -258,7 +258,6 @@ export default function AboutSection() {
           <div className="absolute top-0 right-0 w-48 h-48 bg-[#d7193f]/20 rounded-full blur-3xl" />
           <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#e8718a]/10 rounded-full blur-3xl" />
           
-          {/* Decorative lines */}
           <div className="absolute top-0 left-1/4 w-32 h-px bg-gradient-to-r from-transparent via-[#d7193f]/30 to-transparent" />
           
           <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
@@ -288,7 +287,7 @@ export default function AboutSection() {
               </button>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );
