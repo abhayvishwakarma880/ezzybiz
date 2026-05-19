@@ -1,18 +1,29 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from "react-icons/fa";
 import { IoLocationOutline } from "react-icons/io5";
 import { MdOutlinePhone, MdOutlineMailOutline } from "react-icons/md";
 import { FiClock } from "react-icons/fi";
 
 const quickLinks = [
-  "Home", "About Us", "Company Setup", "Visa Services",
-  "VAT Services", "Banking", "Contact Us"
+  { label: "Home", to: "/" },
+  { label: "About Us", to: "/about" },
+  { label: "Company Setup", to: "/dubaimainland" },
+  { label: "Visa Services", to: "/allvisa" },
+  { label: "VAT Services", to: "/vat" },
+  { label: "Banking", to: "/banking" },
+  { label: "Contact Us", to: "/contact" }
 ];
 
 const serviceLinks = [
-  "Dubai Mainland", "Dubai Free Zone", "Sharjah Free Zone",
-  "Ajman Free Zone", "RAK Free Zone", "All visa service",
-  "Golden visa", "ejar"
+  { label: "Dubai Mainland", to: "/dubaimainland" },
+  { label: "Dubai Free Zone", to: "/dubaifreezone" },
+  { label: "Sharjah Free Zone", to: "/sharjahfreezone" },
+  { label: "Ajman Free Zone", to: "/ajmanfreezone" },
+  { label: "RAK Free Zone", to: "/rakfreezone" },
+  { label: "All visa service", to: "/allvisa" },
+  { label: "Golden visa", to: "/goldenvisa" },
+  { label: "ejar", to: "/ejari" }
 ];
 
 const socialLinks = [
@@ -41,13 +52,13 @@ const ColHeading = ({ children }) => (
   </div>
 );
 
-const FooterLink = ({ href = "#", children }) => (
+const FooterLink = ({ to = "#", children }) => (
   <li>
-    <a href={href}
+    <Link to={to}
       className="group flex items-center text-[13.5px] text-white/40 hover:text-white transition-all duration-300 gap-0">
       <span className="inline-block w-0 group-hover:w-4 h-px bg-red-600 transition-all duration-300 flex-shrink-0 group-hover:mr-2 mr-0" />
       {children}
-    </a>
+    </Link>
   </li>
 );
 
@@ -70,14 +81,14 @@ export default function Footer() {
 
           {/* ── COL 1: Brand ── */}
           <div>
-            <div className="flex items-center gap-3 mb-5">
-              <div className="w-11 h-11 bg-gradient-to-br from-red-600 to-red-900 rounded-[12px] flex items-center justify-center flex-shrink-0">
+            <Link to="/" className="flex items-center gap-3 mb-5 no-underline group select-none">
+              <div className="w-11 h-11 bg-gradient-to-br from-red-600 to-red-900 rounded-[12px] flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-105">
                 <BuildingIcon size={22} />
               </div>
-              <span className="font-['Cormorant_Garamond'] text-[27px] font-bold text-white">
+              <span className="font-['Cormorant_Garamond'] text-[27px] font-bold text-white transition-colors duration-300 group-hover:text-red-500">
                 EzzyBiz
               </span>
-            </div>
+            </Link>
 
             <p className="text-[13.5px] text-white/40 leading-[1.9] mb-7 max-w-[285px]">
               EzzyBiz provides professional business setup, company formation, PRO, VAT, and corporate solutions for entrepreneurs, startups, and global investors across Dubai and the UAE.
@@ -100,15 +111,21 @@ export default function Footer() {
           <div>
             <ColHeading>Quick Links</ColHeading>
             <ul className="flex flex-col gap-[11px]">
-              {quickLinks.map((l, i) => <FooterLink key={i}>{l}</FooterLink>)}
+              {quickLinks.map((item, i) => (
+                <FooterLink key={i} to={item.to}>
+                  {item.label}
+                </FooterLink>
+              ))}
             </ul>
-          </div>
-
-          {/* ── COL 3: Services ── */}
+          </div>          {/* ── COL 3: Services ── */}
           <div>
             <ColHeading>Our Services</ColHeading>
             <ul className="flex flex-col gap-[11px]">
-              {serviceLinks.map((l, i) => <FooterLink key={i}>{l}</FooterLink>)}
+              {serviceLinks.map((item, i) => (
+                <FooterLink key={i} to={item.to}>
+                  {item.label}
+                </FooterLink>
+              ))}
             </ul>
           </div>
 
@@ -190,9 +207,9 @@ export default function Footer() {
             {bottomLinks.map((l, i) => (
               <span key={i} className="flex items-center gap-1.5">
                 {i > 0 && <span className="text-white/15 text-[9px]">•</span>}
-                <a href="#" className="text-[12px] text-white/25 hover:text-red-500 transition-colors duration-300">
+                <Link to="#" className="text-[12px] text-white/25 hover:text-red-500 transition-colors duration-300">
                   {l}
-                </a>
+                </Link>
               </span>
             ))}
           </div>

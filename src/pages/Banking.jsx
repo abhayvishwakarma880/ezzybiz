@@ -2,138 +2,131 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   LuBuilding2 as Building2,
+  // LuGlobe as Globe,
   LuAward as Award,
   LuHandshake as HandShake,
   LuFileCheck as FileCheck,
   LuBuilding as Building,
   LuUsers as Users,
-  LuCalendar as Calendar,
-  LuStar as Star,
   LuChevronRight as ChevronRight,
   LuPhone as Phone,
   LuMessageCircle as MessageCircle,
   LuArrowRight as ArrowRight,
+  // LuCheckCircle2 as CheckCircle2,
   LuBriefcase as Briefcase,
   LuShield as Shield,
   LuClock as Clock,
   LuTrendingUp as TrendingUp,
-  LuDollarSign as DollarSign,
-  LuRocket as Rocket,
-  LuSettings as Settings,
-  LuShoppingCart as ShoppingCart,
-  LuLaptop as Laptop,
-  LuCode as Code,
-  LuHardHat as HardHat,
-  LuMegaphone as Megaphone,
-  LuPlane as Plane,
-  LuTruck as Truck,
-  LuPackage as Package,
-  LuFactory as Factory,
-  LuFilm as Film,
-  LuStethoscope as Stethoscope,
-  LuGraduationCap as GraduationCap,
-  LuSmartphone as Smartphone,
-  LuZap as Zap,
-  LuCpu as Cpu,
+  LuCreditCard as CreditCard,
+  LuBanknote as Banknote,
+  LuLandmark as Landmark,
+  LuFileText as FileText,
+  LuWallet as Wallet,
+  LuLock as Lock,
 } from "react-icons/lu";
 
-import { FiHome as Home, FiCheckCircle as CheckCircle2, FiHelpCircle as HelpCircle } from "react-icons/fi";
-import { BiGlobe as Globe, BiMapPin as MapPin } from "react-icons/bi";
+import { FiHome as Home, FiCheckCircle as CheckCircle2, FiHelpCircle as HelpCircle, FiAlertCircle } from "react-icons/fi";
+import { BiPieChart, BiGlobe as Globe, BiMapPin as MapPin } from "react-icons/bi";
 
-const BENEFITS = [
+const BANKING_SERVICES = [
   {
-    icon: Globe,
-    title: "100% Foreign Ownership",
-    description: "Maintain complete ownership of your company without requiring a local sponsor or UAE national partner.",
+    icon: Landmark,
+    title: "Corporate Bank Account Opening",
+    description: "Professional assistance for opening business bank accounts for mainland, free zone, and offshore companies in the UAE.",
   },
   {
-    icon: Shield,
-    title: "Tax-Friendly Business Environment",
-    description: "Dubai free zones offer investor-friendly tax structures and simplified business regulations for international companies.",
-  },
-  {
-    icon: Zap,
-    title: "Fast Company Registration",
-    description: "Benefit from streamlined company formation procedures and efficient licensing approvals in Dubai free zones.",
-  },
-  {
-    icon: MapPin,
-    title: "Global Business Connectivity",
-    description: "Operate from one of the world's leading international business hubs with access to global markets and logistics networks.",
-  },
-  {
-    icon: Building,
-    title: "Flexible Office Solutions",
-    description: "Choose from flexi desks, coworking spaces, private offices, warehouses, and commercial facilities based on your business requirements.",
+    icon: FileText,
+    title: "Banking Documentation Support",
+    description: "Preparation and verification of company documents, shareholder records, licenses, and compliance paperwork required for banking procedures.",
   },
   {
     icon: Users,
-    title: "Investor Visa Eligibility",
-    description: "Apply for investor and employee visas with professional UAE immigration and corporate support services.",
+    title: "Business Banking Consultation",
+    description: "Professional consultation to help businesses choose suitable banking solutions based on operational and financial requirements.",
+  },
+  {
+    icon: Globe,
+    title: "International Transaction Support",
+    description: "Guidance for businesses handling international payments, supplier transactions, and global business operations.",
+  },
+  {
+    icon: Shield,
+    title: "Compliance Assistance",
+    description: "Support for banking compliance procedures, KYC requirements, and financial verification processes in the UAE.",
+  },
+  {
+    icon: Briefcase,
+    title: "Startup & SME Banking Support",
+    description: "Banking solutions and consultation designed for startups, entrepreneurs, SMEs, and growing businesses in Dubai.",
   },
 ];
 
-const POPULAR_FREE_ZONES = [
-  { name: "Dubai Multi Commodities Centre (DMCC)", icon: Globe },
-  { name: "Dubai Silicon Oasis (DSO)", icon: Cpu },
-  { name: "Dubai Airport Free Zone (DAFZA)", icon: Plane },
-  { name: "Dubai Internet City (DIC)", icon: Code },
-  { name: "Dubai Media City", icon: Film },
-  { name: "Jebel Ali Free Zone (JAFZA)", icon: Truck },
-  { name: "Dubai South", icon: Rocket },
-  { name: "IFZA Dubai", icon: Building2 },
-  { name: "Dubai Healthcare City", icon: Stethoscope },
-  { name: "Dubai Design District (D3)", icon: Award },
-];
-
-const BUSINESS_ACTIVITIES = [
-  { name: "E-Commerce", icon: ShoppingCart },
-  { name: "General Trading", icon: HandShake },
-  { name: "IT & Technology", icon: Code },
-  { name: "Consultancy Services", icon: TrendingUp },
-  { name: "Media & Marketing", icon: Megaphone },
-  { name: "Import & Export", icon: Truck },
-  { name: "Logistics & Warehousing", icon: Package },
-  { name: "Healthcare Services", icon: Stethoscope },
-  { name: "Education & Training", icon: GraduationCap },
-  { name: "Travel & Tourism", icon: Plane },
-  { name: "Professional Services", icon: Briefcase },
-  { name: "Digital Startups", icon: Smartphone },
+const BENEFITS = [
+  {
+    icon: Lock,
+    title: "Secure Financial Operations",
+    description: "Manage company finances, transactions, and payments securely through regulated UAE banking institutions.",
+  },
+  {
+    icon: Globe,
+    title: "International Business Access",
+    description: "Operate globally with international transaction capabilities and worldwide business connectivity.",
+  },
+  {
+    icon: Award,
+    title: "Professional Business Credibility",
+    description: "A corporate bank account strengthens business credibility and supports professional financial operations.",
+  },
+  {
+    icon: TrendingUp,
+    title: "Business Growth Support",
+    description: "Access modern banking facilities and financial tools that support long-term business growth in the UAE.",
+  },
+  {
+    icon: Wallet,
+    title: "Efficient Payment Management",
+    description: "Simplify salary payments, supplier transactions, operational expenses, and client payment processing.",
+  },
+  {
+    icon: Landmark,
+    title: "Global Banking Connectivity",
+    description: "Benefit from UAE's position as a leading international financial and business hub.",
+  },
 ];
 
 const PROCESS_STEPS = [
-  { step: "01", title: "Business Consultation", description: "Discuss your business goals and select the most suitable Dubai free zone and business activity." },
-  { step: "02", title: "Choose License Type", description: "Select the appropriate commercial, service, industrial, or professional license for your company." },
-  { step: "03", title: "Documentation Submission", description: "Prepare and submit required company registration documents and shareholder information for approval." },
-  { step: "04", title: "License Issuance", description: "Receive your Dubai free zone trade license and complete company incorporation procedures." },
-  { step: "05", title: "Visa & Banking Assistance", description: "Complete investor visa processing and business bank account setup with expert corporate guidance." },
+  { step: "01", title: "Business Consultation", description: "Understand your business activity, operational requirements, and banking preferences to identify suitable banking options." },
+  { step: "02", title: "Documentation Preparation", description: "Prepare company licenses, shareholder documents, passport copies, financial records, and compliance paperwork." },
+  { step: "03", title: "Bank Application Submission", description: "Submit corporate banking applications and required documentation for compliance and verification procedures." },
+  { step: "04", title: "Compliance & Verification", description: "Complete KYC procedures, business verification, and banking compliance reviews required by financial institutions." },
+  { step: "05", title: "Account Activation", description: "Receive your approved corporate bank account details and begin secure business banking operations in the UAE." },
 ];
 
 const WHY_CHOOSE = [
-  "Professional free zone business consultants",
-  "Fast and transparent registration process",
-  "Affordable and flexible business setup solutions",
-  "Complete visa and immigration support",
-  "Business banking assistance and guidance",
-  "End-to-end UAE corporate services",
+  "Professional banking consultants",
+  "Reliable business banking guidance",
+  "Complete documentation support",
+  "Transparent and professional consultation",
+  "Support for startups and international investors",
+  "End-to-end UAE corporate assistance",
 ];
 
 const FAQS = [
   {
-    question: "Can foreigners fully own a Dubai free zone company?",
-    answer: "Yes, Dubai free zone companies allow 100% foreign ownership without requiring a local sponsor.",
+    question: "Can foreign investors open a business bank account in Dubai?",
+    answer: "Yes, eligible mainland and free zone companies owned by foreign investors can apply for corporate bank accounts in the UAE.",
   },
   {
-    question: "Can I get a UAE residence visa through free zone setup?",
-    answer: "Yes, investors and eligible employees can apply for UAE residence visas through Dubai free zone companies.",
+    question: "What documents are required for business bank account opening?",
+    answer: "Required documents generally include company licenses, shareholder passports, Emirates IDs, business activity details, and supporting compliance paperwork.",
   },
   {
-    question: "Which Dubai free zone is best for startups?",
-    answer: "The ideal free zone depends on your business activity, budget, visa requirements, and operational goals. Our consultants help you choose the best option.",
+    question: "Does EzzyBiz assist with banking documentation?",
+    answer: "Yes, we provide complete documentation preparation, compliance guidance, and business banking assistance services.",
   },
   {
-    question: "Can Dubai free zone companies trade in mainland UAE?",
-    answer: "Free zone companies can trade internationally directly, while mainland trading may require additional approvals or local distribution arrangements.",
+    question: "How long does business bank account opening take?",
+    answer: "The timeline depends on the bank, business activity, and compliance review procedures, which may vary based on individual business profiles.",
   },
 ];
 
@@ -156,9 +149,9 @@ function useIntersectionObserver(options = {}) {
   return [ref, isVisible];
 }
 
-function BenefitCard({ benefit, index }) {
+function BankingServiceCard({ service, index }) {
   const [ref, visible] = useIntersectionObserver();
-  const Icon = benefit.icon;
+  const Icon = service.icon;
 
   return (
     <div
@@ -171,48 +164,29 @@ function BenefitCard({ benefit, index }) {
       <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#d7193f]/10 to-[#d7193f]/5 flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110 group-hover:bg-[#d7193f]/15">
         <Icon size={22} className="text-[#d7193f]" />
       </div>
-      <h3 className="font-semibold text-gray-900 text-lg mb-2">{benefit.title}</h3>
-      <p className="text-gray-500 text-sm leading-relaxed">{benefit.description}</p>
+      <h3 className="font-semibold text-gray-900 text-lg mb-2">{service.title}</h3>
+      <p className="text-gray-500 text-sm leading-relaxed">{service.description}</p>
     </div>
   );
 }
 
-function FreeZoneCard({ freeZone, index }) {
+function BenefitCard({ benefit, index }) {
   const [ref, visible] = useIntersectionObserver();
-  const Icon = freeZone.icon;
+  const Icon = benefit.icon;
 
   return (
     <div
       ref={ref}
-      className={`group flex items-center gap-3 p-3 rounded-lg bg-gray-50/50 border border-gray-100 transition-all duration-300 hover:bg-white hover:border-[#d7193f]/20 hover:shadow-sm ${
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+      className={`group p-5 rounded-xl bg-gradient-to-br from-[#fef8f9] to-white border border-gray-100 shadow-sm transition-all duration-500 hover:shadow-md hover:border-[#d7193f]/10 ${
+        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
-      style={{ transitionDelay: `${index * 40}ms` }}
+      style={{ transitionDelay: `${index * 80}ms` }}
     >
-      <div className="w-7 h-7 rounded-md bg-[#d7193f]/5 flex items-center justify-center group-hover:bg-[#d7193f]/10 transition-colors">
-        <Icon size={13} className="text-[#d7193f]" />
+      <div className="w-10 h-10 rounded-lg bg-[#d7193f]/5 flex items-center justify-center mb-3">
+        <Icon size={18} className="text-[#d7193f]" />
       </div>
-      <span className="text-sm text-gray-700 group-hover:text-[#d7193f] transition-colors">{freeZone.name}</span>
-    </div>
-  );
-}
-
-function ActivityCard({ activity, index }) {
-  const [ref, visible] = useIntersectionObserver();
-  const Icon = activity.icon;
-
-  return (
-    <div
-      ref={ref}
-      className={`group flex items-center gap-3 p-3 rounded-lg bg-gray-50/50 border border-gray-100 transition-all duration-300 hover:bg-white hover:border-[#d7193f]/20 hover:shadow-sm ${
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-      }`}
-      style={{ transitionDelay: `${index * 40}ms` }}
-    >
-      <div className="w-7 h-7 rounded-md bg-[#d7193f]/5 flex items-center justify-center group-hover:bg-[#d7193f]/10 transition-colors">
-        <Icon size={13} className="text-[#d7193f]" />
-      </div>
-      <span className="text-sm text-gray-700 group-hover:text-[#d7193f] transition-colors">{activity.name}</span>
+      <h3 className="font-semibold text-gray-800 text-sm mb-1">{benefit.title}</h3>
+      <p className="text-gray-500 text-xs leading-relaxed">{benefit.description}</p>
     </div>
   );
 }
@@ -277,12 +251,11 @@ function FAQItem({ faq, index }) {
   );
 }
 
-export default function DubaiFZ() {
+export default function Banking() {
   const [heroRef, heroVisible] = useIntersectionObserver({ threshold: 0.1 });
   const [introRef, introVisible] = useIntersectionObserver({ threshold: 0.1 });
+  const [servicesRef, servicesVisible] = useIntersectionObserver({ threshold: 0.1 });
   const [benefitsRef, benefitsVisible] = useIntersectionObserver({ threshold: 0.1 });
-  const [freeZonesRef, freeZonesVisible] = useIntersectionObserver({ threshold: 0.1 });
-  const [activitiesRef, activitiesVisible] = useIntersectionObserver({ threshold: 0.1 });
   const [processRef, processVisible] = useIntersectionObserver({ threshold: 0.1 });
   const [whyRef, whyVisible] = useIntersectionObserver({ threshold: 0.1 });
   const [faqRef, faqVisible] = useIntersectionObserver({ threshold: 0.1 });
@@ -306,25 +279,25 @@ export default function DubaiFZ() {
             }`}
           >
             <div className="inline-flex items-center gap-2 bg-[#d7193f]/5 backdrop-blur-sm border border-[#d7193f]/10 rounded-full px-4 py-1.5 mb-5">
-              <CheckCircle2 size={12} className="text-[#d7193f]" />
-              <span className="text-[10px] font-semibold tracking-[1px] uppercase text-[#d7193f]">DUBAI FREE ZONE SETUP</span>
+              <Landmark size={12} className="text-[#d7193f]" />
+              <span className="text-[10px] font-semibold tracking-[1px] uppercase text-[#d7193f]">BUSINESS BANKING SERVICES</span>
             </div>
 
             <h1 className="font-['Playfair_Display',serif] text-[clamp(34px,5vw,54px)] font-bold text-[#0f0f1a] leading-[1.2] mb-4">
-              Dubai Free Zone
+              Business Bank Account Opening
               <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d7193f] to-[#e8718a]">Company Formation Services</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d7193f] to-[#e8718a]">Services In Dubai</span>
             </h1>
 
             <p className="text-[15px] md:text-[16px] leading-relaxed text-gray-600 mb-8">
-              Establish your company in Dubai Free Zone with complete business setup support, investor-friendly regulations, 
-              and flexible corporate solutions. EzzyBiz helps entrepreneurs, startups, and global investors launch and expand 
-              their businesses across the UAE with smooth registration and compliance assistance.
+              EzzyBiz provides professional business banking assistance for entrepreneurs, startups, SMEs, and international 
+              investors across Dubai and the UAE. Our experts simplify the corporate bank account opening process with 
+              complete documentation support, banking guidance, and compliance assistance for smooth business operations.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact" className="group flex items-center justify-center gap-2 bg-gradient-to-r from-[#d7193f] to-[#b81236] text-white px-7 py-3 rounded-lg text-sm font-semibold tracking-wide transition-all duration-300 hover:shadow-lg hover:shadow-[#d7193f]/30 hover:scale-105 no-underline">
-                Start Your Company <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                Open Business Account <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link to="/contact" className="flex items-center justify-center gap-2 border border-gray-300 bg-white text-gray-700 px-7 py-3 rounded-lg text-sm font-semibold tracking-wide transition-all duration-300 hover:border-[#d7193f] hover:text-[#d7193f] hover:shadow-md no-underline">
                 <MessageCircle size={14} /> Book Free Consultation
@@ -345,34 +318,64 @@ export default function DubaiFZ() {
           >
             <div className="inline-flex items-center gap-2 mb-4 justify-center">
               <div className="w-8 h-[2px] bg-[#d7193f]/40" />
-              <span className="text-[10px] font-semibold tracking-[2px] uppercase text-[#d7193f]">DUBAI FREE ZONE</span>
+              <span className="text-[10px] font-semibold tracking-[2px] uppercase text-[#d7193f]">BUSINESS BANKING</span>
               <div className="w-8 h-[2px] bg-[#d7193f]/40" />
             </div>
             <h2 className="font-['Playfair_Display',serif] text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a] mb-5">
-              What Is Dubai Free Zone Company Formation?
+              Corporate Banking Solutions In UAE
             </h2>
             <div className="space-y-4 text-gray-600 text-[15px] leading-relaxed text-left">
               <p>
-                Dubai Free Zone company formation allows entrepreneurs and international investors to establish businesses 
-                in specialized economic zones designed to support global trade, innovation, and investment. Free zones provide 
-                simplified regulations, tax-friendly policies, and flexible setup options for businesses across multiple industries.
+                A corporate bank account is an essential part of operating a business in the UAE. Businesses require 
+                professional banking solutions to manage transactions, payments, international transfers, operational 
+                expenses, and financial activities efficiently.
               </p>
               <p>
-                Dubai is home to several world-class free zones offering modern infrastructure, international connectivity, 
-                and business-friendly environments for startups, SMEs, and multinational companies. Free zone companies benefit 
-                from efficient registration procedures and operational flexibility.
+                Opening a business bank account in Dubai involves compliance procedures, company verification, 
+                documentation review, and banking approvals. Choosing the right banking partner and preparing accurate 
+                documentation is important for smooth account opening and long-term financial operations.
               </p>
               <p>
-                EzzyBiz provides complete support for Dubai free zone company setup including business activity selection, 
-                trade license registration, visa processing, office solutions, banking support, and corporate compliance services.
+                EzzyBiz provides complete business banking assistance including bank account opening guidance, 
+                documentation preparation, compliance support, and coordination with leading UAE banking institutions 
+                for mainland and free zone companies.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ========== BENEFITS SECTION ========== */}
+      {/* ========== OUR BANKING SERVICES SECTION ========== */}
       <section className="py-16 md:py-20 bg-gradient-to-br from-[#fef8f9] to-white">
+        <div className="max-w-[1100px] mx-auto px-5 md:px-8">
+          <div
+            ref={servicesRef}
+            className={`transition-all duration-600 ${
+              servicesVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 mb-3 justify-center">
+                <div className="w-8 h-[2px] bg-[#d7193f]/40" />
+                <span className="text-[10px] font-semibold tracking-[2px] uppercase text-[#d7193f]">OUR SERVICES</span>
+                <div className="w-8 h-[2px] bg-[#d7193f]/40" />
+              </div>
+              <h2 className="font-['Playfair_Display',serif] text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a]">
+                Our Business Banking Services
+              </h2>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {BANKING_SERVICES.map((service, idx) => (
+                <BankingServiceCard key={idx} service={service} index={idx} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========== BENEFITS SECTION ========== */}
+      <section className="py-16 md:py-20 bg-white">
         <div className="max-w-[1100px] mx-auto px-5 md:px-8">
           <div
             ref={benefitsRef}
@@ -380,18 +383,18 @@ export default function DubaiFZ() {
               benefitsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            <div className="text-center mb-12">
+            <div className="text-center mb-10">
               <div className="inline-flex items-center gap-2 mb-3 justify-center">
                 <div className="w-8 h-[2px] bg-[#d7193f]/40" />
-                <span className="text-[10px] font-semibold tracking-[2px] uppercase text-[#d7193f]">KEY BENEFITS</span>
+                <span className="text-[10px] font-semibold tracking-[2px] uppercase text-[#d7193f]">WHY UAE BANKING</span>
                 <div className="w-8 h-[2px] bg-[#d7193f]/40" />
               </div>
               <h2 className="font-['Playfair_Display',serif] text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a]">
-                Benefits Of Dubai Free Zone Company Formation
+                Benefits Of UAE Business Banking
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {BENEFITS.map((benefit, idx) => (
                 <BenefitCard key={idx} benefit={benefit} index={idx} />
               ))}
@@ -400,66 +403,8 @@ export default function DubaiFZ() {
         </div>
       </section>
 
-      {/* ========== POPULAR FREE ZONES SECTION ========== */}
-      <section className="py-16 md:py-20 bg-white">
-        <div className="max-w-[1100px] mx-auto px-5 md:px-8">
-          <div
-            ref={freeZonesRef}
-            className={`transition-all duration-600 ${
-              freeZonesVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
-            <div className="text-center mb-10">
-              <div className="inline-flex items-center gap-2 mb-3 justify-center">
-                <div className="w-8 h-[2px] bg-[#d7193f]/40" />
-                <span className="text-[10px] font-semibold tracking-[2px] uppercase text-[#d7193f]">POPULAR FREE ZONES</span>
-                <div className="w-8 h-[2px] bg-[#d7193f]/40" />
-              </div>
-              <h2 className="font-['Playfair_Display',serif] text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a]">
-                Popular Dubai Free Zones
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-              {POPULAR_FREE_ZONES.map((freeZone, idx) => (
-                <FreeZoneCard key={idx} freeZone={freeZone} index={idx} />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ========== BUSINESS ACTIVITIES SECTION ========== */}
-      <section className="py-16 md:py-20 bg-gradient-to-br from-[#fef8f9] to-white">
-        <div className="max-w-[1100px] mx-auto px-5 md:px-8">
-          <div
-            ref={activitiesRef}
-            className={`transition-all duration-600 ${
-              activitiesVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
-            <div className="text-center mb-10">
-              <div className="inline-flex items-center gap-2 mb-3 justify-center">
-                <div className="w-8 h-[2px] bg-[#d7193f]/40" />
-                <span className="text-[10px] font-semibold tracking-[2px] uppercase text-[#d7193f]">BUSINESS ACTIVITIES</span>
-                <div className="w-8 h-[2px] bg-[#d7193f]/40" />
-              </div>
-              <h2 className="font-['Playfair_Display',serif] text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a]">
-                Popular Business Activities In Dubai Free Zone
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-              {BUSINESS_ACTIVITIES.map((activity, idx) => (
-                <ActivityCard key={idx} activity={activity} index={idx} />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ========== PROCESS SECTION ========== */}
-      <section className="py-16 md:py-20 bg-white">
+      <section className="py-16 md:py-20 bg-gradient-to-br from-[#fef8f9] to-white">
         <div className="max-w-[1000px] mx-auto px-5 md:px-8">
           <div
             ref={processRef}
@@ -470,11 +415,11 @@ export default function DubaiFZ() {
             <div className="text-center mb-10">
               <div className="inline-flex items-center gap-2 mb-3 justify-center">
                 <div className="w-8 h-[2px] bg-[#d7193f]/40" />
-                <span className="text-[10px] font-semibold tracking-[2px] uppercase text-[#d7193f]">SETUP PROCESS</span>
+                <span className="text-[10px] font-semibold tracking-[2px] uppercase text-[#d7193f]">ACCOUNT OPENING PROCESS</span>
                 <div className="w-8 h-[2px] bg-[#d7193f]/40" />
               </div>
               <h2 className="font-['Playfair_Display',serif] text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a]">
-                Dubai Free Zone Company Setup Process
+                Business Bank Account Opening Process
               </h2>
             </div>
 
@@ -488,7 +433,7 @@ export default function DubaiFZ() {
       </section>
 
       {/* ========== WHY CHOOSE EZZYBIZ ========== */}
-      <section className="py-16 md:py-20 bg-gradient-to-br from-[#fef8f9] to-white">
+      <section className="py-16 md:py-20 bg-white">
         <div className="max-w-[1100px] mx-auto px-5 md:px-8">
           <div
             ref={whyRef}
@@ -503,7 +448,7 @@ export default function DubaiFZ() {
                 <div className="w-8 h-[2px] bg-[#d7193f]/40" />
               </div>
               <h2 className="font-['Playfair_Display',serif] text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a]">
-                Why Choose EzzyBiz For Dubai Free Zone Setup
+                Why Choose EzzyBiz For Business Banking Assistance
               </h2>
             </div>
 
@@ -511,7 +456,7 @@ export default function DubaiFZ() {
               {WHY_CHOOSE.map((item, idx) => (
                 <div
                   key={idx}
-                  className={`flex items-center gap-3 p-4 rounded-lg bg-white border border-gray-100 shadow-sm transition-all duration-300 hover:shadow-md hover:border-[#d7193f]/20 ${
+                  className={`flex items-center gap-3 p-4 rounded-lg bg-gray-50/50 border border-gray-100 transition-all duration-300 hover:bg-white hover:border-[#d7193f]/20 hover:shadow-sm ${
                     whyVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                   }`}
                   style={{ transitionDelay: `${idx * 60}ms` }}
@@ -526,7 +471,7 @@ export default function DubaiFZ() {
       </section>
 
       {/* ========== FAQ SECTION ========== */}
-      <section className="py-16 md:py-20 bg-white">
+      <section className="py-16 md:py-20 bg-gradient-to-br from-[#fef8f9] to-white">
         <div className="max-w-[900px] mx-auto px-5 md:px-8">
           <div
             ref={faqRef}
@@ -545,7 +490,7 @@ export default function DubaiFZ() {
               </h2>
             </div>
 
-            <div className="bg-gradient-to-br from-[#fef8f9] to-white rounded-2xl p-6 md:p-8 border border-gray-100 shadow-sm">
+            <div className="bg-white rounded-2xl p-6 md:p-8 border border-gray-100 shadow-sm">
               {FAQS.map((faq, idx) => (
                 <FAQItem key={idx} faq={faq} index={idx} />
               ))}
@@ -569,11 +514,11 @@ export default function DubaiFZ() {
 
             <div className="relative z-10 text-center">
               <h2 className="font-['Playfair_Display',serif] text-[clamp(24px,4vw,34px)] font-bold text-white mb-3">
-                Launch Your Dubai Free Zone Business Today
+                Open Your UAE Business Bank Account With Confidence
               </h2>
               <p className="text-white/70 text-sm mb-8 max-w-lg mx-auto">
-                Partner with EzzyBiz for smooth company formation, expert consultation, and reliable business 
-                setup solutions across Dubai free zones.
+                Partner with EzzyBiz for professional banking assistance, smooth documentation support, and reliable 
+                corporate banking solutions in Dubai and the UAE.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/contact" className="group flex items-center justify-center gap-2 bg-gradient-to-r from-[#d7193f] to-[#b81236] text-white px-7 py-3 rounded-lg text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-[#d7193f]/30 hover:scale-105 no-underline">

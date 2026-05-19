@@ -2,138 +2,140 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   LuBuilding2 as Building2,
+  // LuGlobe as Globe,
   LuAward as Award,
   LuHandshake as HandShake,
   LuFileCheck as FileCheck,
   LuBuilding as Building,
   LuUsers as Users,
-  LuCalendar as Calendar,
-  LuStar as Star,
   LuChevronRight as ChevronRight,
   LuPhone as Phone,
   LuMessageCircle as MessageCircle,
   LuArrowRight as ArrowRight,
+  // LuCheckCircle2 as CheckCircle2,
   LuBriefcase as Briefcase,
   LuShield as Shield,
   LuClock as Clock,
   LuTrendingUp as TrendingUp,
+  // LuMapPin as MapPin,
   LuDollarSign as DollarSign,
-  LuRocket as Rocket,
-  LuSettings as Settings,
-  LuShoppingCart as ShoppingCart,
-  LuLaptop as Laptop,
-  LuCode as Code,
-  LuHardHat as HardHat,
-  LuMegaphone as Megaphone,
-  LuPlane as Plane,
-  LuTruck as Truck,
-  LuPackage as Package,
-  LuFactory as Factory,
-  LuFilm as Film,
-  LuStethoscope as Stethoscope,
-  LuGraduationCap as GraduationCap,
-  LuSmartphone as Smartphone,
   LuZap as Zap,
-  LuCpu as Cpu,
+  LuHeart as Heart,
+  LuPlane as Plane,
+  LuStar as Star,
+  // LuPassport as Passport,
+  LuIdCard as IdCard,
+  LuCalendar as Calendar,
+  // LuHome as Home,
+  LuCrown as Crown,
+  LuGraduationCap as GraduationCap,
+  LuCode as Code,
+  LuMicroscope as Microscope,
+  LuPalette as Palette,
 } from "react-icons/lu";
 
 import { FiHome as Home, FiCheckCircle as CheckCircle2, FiHelpCircle as HelpCircle } from "react-icons/fi";
 import { BiGlobe as Globe, BiMapPin as MapPin } from "react-icons/bi";
-
-const BENEFITS = [
+import { FaPassport } from "react-icons/fa";
+const ELIGIBILITY_CATEGORIES = [
   {
-    icon: Globe,
-    title: "100% Foreign Ownership",
-    description: "Maintain complete ownership of your company without requiring a local sponsor or UAE national partner.",
+    icon: Crown,
+    title: "Investors",
+    description: "Real estate investors and business investors meeting UAE investment requirements may qualify for long-term Golden Visa residency.",
   },
   {
-    icon: Shield,
-    title: "Tax-Friendly Business Environment",
-    description: "Dubai free zones offer investor-friendly tax structures and simplified business regulations for international companies.",
-  },
-  {
-    icon: Zap,
-    title: "Fast Company Registration",
-    description: "Benefit from streamlined company formation procedures and efficient licensing approvals in Dubai free zones.",
-  },
-  {
-    icon: MapPin,
-    title: "Global Business Connectivity",
-    description: "Operate from one of the world's leading international business hubs with access to global markets and logistics networks.",
-  },
-  {
-    icon: Building,
-    title: "Flexible Office Solutions",
-    description: "Choose from flexi desks, coworking spaces, private offices, warehouses, and commercial facilities based on your business requirements.",
+    icon: Briefcase,
+    title: "Entrepreneurs",
+    description: "Startup founders, business owners, and innovative entrepreneurs with successful projects may be eligible for the Golden Visa program.",
   },
   {
     icon: Users,
-    title: "Investor Visa Eligibility",
-    description: "Apply for investor and employee visas with professional UAE immigration and corporate support services.",
+    title: "Skilled Professionals",
+    description: "Highly qualified professionals in healthcare, engineering, technology, education, finance, and other specialized sectors can apply under eligible categories.",
+  },
+  {
+    icon: Microscope,
+    title: "Scientists & Researchers",
+    description: "Researchers and scientists contributing to innovation and advanced sectors may qualify for UAE Golden Visa residency.",
+  },
+  {
+    icon: GraduationCap,
+    title: "Outstanding Students",
+    description: "High-achieving students and graduates from recognized institutions may qualify under academic excellence categories.",
+  },
+  {
+    icon: Palette,
+    title: "Creative Talent & Specialists",
+    description: "Creative professionals, innovators, digital creators, and individuals with exceptional talents may be eligible for long-term residency.",
   },
 ];
 
-const POPULAR_FREE_ZONES = [
-  { name: "Dubai Multi Commodities Centre (DMCC)", icon: Globe },
-  { name: "Dubai Silicon Oasis (DSO)", icon: Cpu },
-  { name: "Dubai Airport Free Zone (DAFZA)", icon: Plane },
-  { name: "Dubai Internet City (DIC)", icon: Code },
-  { name: "Dubai Media City", icon: Film },
-  { name: "Jebel Ali Free Zone (JAFZA)", icon: Truck },
-  { name: "Dubai South", icon: Rocket },
-  { name: "IFZA Dubai", icon: Building2 },
-  { name: "Dubai Healthcare City", icon: Stethoscope },
-  { name: "Dubai Design District (D3)", icon: Award },
-];
-
-const BUSINESS_ACTIVITIES = [
-  { name: "E-Commerce", icon: ShoppingCart },
-  { name: "General Trading", icon: HandShake },
-  { name: "IT & Technology", icon: Code },
-  { name: "Consultancy Services", icon: TrendingUp },
-  { name: "Media & Marketing", icon: Megaphone },
-  { name: "Import & Export", icon: Truck },
-  { name: "Logistics & Warehousing", icon: Package },
-  { name: "Healthcare Services", icon: Stethoscope },
-  { name: "Education & Training", icon: GraduationCap },
-  { name: "Travel & Tourism", icon: Plane },
-  { name: "Professional Services", icon: Briefcase },
-  { name: "Digital Startups", icon: Smartphone },
+const BENEFITS = [
+  {
+    icon: Calendar,
+    title: "Long-Term Residency",
+    description: "Enjoy extended UAE residency options designed for investors, professionals, and entrepreneurs.",
+  },
+  {
+    icon: TrendingUp,
+    title: "Business & Investment Opportunities",
+    description: "Access one of the world's leading business hubs with strong investment and global networking opportunities.",
+  },
+  {
+    icon: Users,
+    title: "Family Sponsorship",
+    description: "Golden Visa holders can sponsor eligible family members under UAE immigration regulations.",
+  },
+  {
+    icon: Star,
+    title: "Premium Lifestyle",
+    description: "Experience world-class infrastructure, healthcare, education, and luxury living standards in the UAE.",
+  },
+  {
+    icon: Shield,
+    title: "Professional Stability",
+    description: "Build long-term business and professional opportunities with greater residency stability in the UAE.",
+  },
+  {
+    icon: Globe,
+    title: "Global Connectivity",
+    description: "Operate from a globally connected business hub with strong international travel and commercial access.",
+  },
 ];
 
 const PROCESS_STEPS = [
-  { step: "01", title: "Business Consultation", description: "Discuss your business goals and select the most suitable Dubai free zone and business activity." },
-  { step: "02", title: "Choose License Type", description: "Select the appropriate commercial, service, industrial, or professional license for your company." },
-  { step: "03", title: "Documentation Submission", description: "Prepare and submit required company registration documents and shareholder information for approval." },
-  { step: "04", title: "License Issuance", description: "Receive your Dubai free zone trade license and complete company incorporation procedures." },
-  { step: "05", title: "Visa & Banking Assistance", description: "Complete investor visa processing and business bank account setup with expert corporate guidance." },
+  { step: "01", title: "Eligibility Assessment", description: "Review your profile, profession, investments, or qualifications to determine Golden Visa eligibility." },
+  { step: "02", title: "Documentation Preparation", description: "Prepare and organize all required legal documents, certificates, investment records, and supporting paperwork." },
+  { step: "03", title: "Application Submission", description: "Complete Golden Visa application procedures and government processing with professional support." },
+  { step: "04", title: "Medical & Emirates ID", description: "Coordinate medical testing, biometrics, and Emirates ID registration as part of the residency process." },
+  { step: "05", title: "Golden Visa Approval", description: "Receive your UAE Golden Visa approval and complete all final immigration formalities successfully." },
 ];
 
 const WHY_CHOOSE = [
-  "Professional free zone business consultants",
-  "Fast and transparent registration process",
-  "Affordable and flexible business setup solutions",
-  "Complete visa and immigration support",
-  "Business banking assistance and guidance",
-  "End-to-end UAE corporate services",
+  "Professional immigration consultants",
+  "Reliable Golden Visa assistance",
+  "Complete documentation support",
+  "Transparent and professional guidance",
+  "Investor and entrepreneur visa expertise",
+  "End-to-end UAE immigration support",
 ];
 
 const FAQS = [
   {
-    question: "Can foreigners fully own a Dubai free zone company?",
-    answer: "Yes, Dubai free zone companies allow 100% foreign ownership without requiring a local sponsor.",
+    question: "What is the UAE Golden Visa?",
+    answer: "The UAE Golden Visa is a long-term residency program for eligible investors, entrepreneurs, professionals, students, and talented individuals.",
   },
   {
-    question: "Can I get a UAE residence visa through free zone setup?",
-    answer: "Yes, investors and eligible employees can apply for UAE residence visas through Dubai free zone companies.",
+    question: "Can Golden Visa holders sponsor family members?",
+    answer: "Yes, eligible Golden Visa holders can sponsor spouses, children, and dependent family members under UAE immigration regulations.",
   },
   {
-    question: "Which Dubai free zone is best for startups?",
-    answer: "The ideal free zone depends on your business activity, budget, visa requirements, and operational goals. Our consultants help you choose the best option.",
+    question: "Who is eligible for the UAE Golden Visa?",
+    answer: "Eligibility depends on investment value, professional qualifications, business ownership, academic achievements, or specialized talent categories.",
   },
   {
-    question: "Can Dubai free zone companies trade in mainland UAE?",
-    answer: "Free zone companies can trade internationally directly, while mainland trading may require additional approvals or local distribution arrangements.",
+    question: "Does EzzyBiz assist with the full Golden Visa process?",
+    answer: "Yes, we provide complete Golden Visa support including consultation, documentation, application processing, Emirates ID coordination, and immigration assistance.",
   },
 ];
 
@@ -156,9 +158,9 @@ function useIntersectionObserver(options = {}) {
   return [ref, isVisible];
 }
 
-function BenefitCard({ benefit, index }) {
+function EligibilityCard({ category, index }) {
   const [ref, visible] = useIntersectionObserver();
-  const Icon = benefit.icon;
+  const Icon = category.icon;
 
   return (
     <div
@@ -171,48 +173,29 @@ function BenefitCard({ benefit, index }) {
       <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#d7193f]/10 to-[#d7193f]/5 flex items-center justify-center mb-4 transition-all duration-300 group-hover:scale-110 group-hover:bg-[#d7193f]/15">
         <Icon size={22} className="text-[#d7193f]" />
       </div>
-      <h3 className="font-semibold text-gray-900 text-lg mb-2">{benefit.title}</h3>
-      <p className="text-gray-500 text-sm leading-relaxed">{benefit.description}</p>
+      <h3 className="font-semibold text-gray-900 text-lg mb-2">{category.title}</h3>
+      <p className="text-gray-500 text-sm leading-relaxed">{category.description}</p>
     </div>
   );
 }
 
-function FreeZoneCard({ freeZone, index }) {
+function BenefitCard({ benefit, index }) {
   const [ref, visible] = useIntersectionObserver();
-  const Icon = freeZone.icon;
+  const Icon = benefit.icon;
 
   return (
     <div
       ref={ref}
-      className={`group flex items-center gap-3 p-3 rounded-lg bg-gray-50/50 border border-gray-100 transition-all duration-300 hover:bg-white hover:border-[#d7193f]/20 hover:shadow-sm ${
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+      className={`group p-5 rounded-xl bg-gradient-to-br from-[#fef8f9] to-white border border-gray-100 shadow-sm transition-all duration-500 hover:shadow-md hover:border-[#d7193f]/10 ${
+        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
-      style={{ transitionDelay: `${index * 40}ms` }}
+      style={{ transitionDelay: `${index * 80}ms` }}
     >
-      <div className="w-7 h-7 rounded-md bg-[#d7193f]/5 flex items-center justify-center group-hover:bg-[#d7193f]/10 transition-colors">
-        <Icon size={13} className="text-[#d7193f]" />
+      <div className="w-10 h-10 rounded-lg bg-[#d7193f]/5 flex items-center justify-center mb-3">
+        <Icon size={18} className="text-[#d7193f]" />
       </div>
-      <span className="text-sm text-gray-700 group-hover:text-[#d7193f] transition-colors">{freeZone.name}</span>
-    </div>
-  );
-}
-
-function ActivityCard({ activity, index }) {
-  const [ref, visible] = useIntersectionObserver();
-  const Icon = activity.icon;
-
-  return (
-    <div
-      ref={ref}
-      className={`group flex items-center gap-3 p-3 rounded-lg bg-gray-50/50 border border-gray-100 transition-all duration-300 hover:bg-white hover:border-[#d7193f]/20 hover:shadow-sm ${
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-      }`}
-      style={{ transitionDelay: `${index * 40}ms` }}
-    >
-      <div className="w-7 h-7 rounded-md bg-[#d7193f]/5 flex items-center justify-center group-hover:bg-[#d7193f]/10 transition-colors">
-        <Icon size={13} className="text-[#d7193f]" />
-      </div>
-      <span className="text-sm text-gray-700 group-hover:text-[#d7193f] transition-colors">{activity.name}</span>
+      <h3 className="font-semibold text-gray-800 text-sm mb-1">{benefit.title}</h3>
+      <p className="text-gray-500 text-xs leading-relaxed">{benefit.description}</p>
     </div>
   );
 }
@@ -277,12 +260,11 @@ function FAQItem({ faq, index }) {
   );
 }
 
-export default function DubaiFZ() {
+export default function GoldenVisa() {
   const [heroRef, heroVisible] = useIntersectionObserver({ threshold: 0.1 });
   const [introRef, introVisible] = useIntersectionObserver({ threshold: 0.1 });
+  const [eligibilityRef, eligibilityVisible] = useIntersectionObserver({ threshold: 0.1 });
   const [benefitsRef, benefitsVisible] = useIntersectionObserver({ threshold: 0.1 });
-  const [freeZonesRef, freeZonesVisible] = useIntersectionObserver({ threshold: 0.1 });
-  const [activitiesRef, activitiesVisible] = useIntersectionObserver({ threshold: 0.1 });
   const [processRef, processVisible] = useIntersectionObserver({ threshold: 0.1 });
   const [whyRef, whyVisible] = useIntersectionObserver({ threshold: 0.1 });
   const [faqRef, faqVisible] = useIntersectionObserver({ threshold: 0.1 });
@@ -306,25 +288,25 @@ export default function DubaiFZ() {
             }`}
           >
             <div className="inline-flex items-center gap-2 bg-[#d7193f]/5 backdrop-blur-sm border border-[#d7193f]/10 rounded-full px-4 py-1.5 mb-5">
-              <CheckCircle2 size={12} className="text-[#d7193f]" />
-              <span className="text-[10px] font-semibold tracking-[1px] uppercase text-[#d7193f]">DUBAI FREE ZONE SETUP</span>
+              <Crown size={12} className="text-[#d7193f]" />
+              <span className="text-[10px] font-semibold tracking-[1px] uppercase text-[#d7193f]">UAE GOLDEN VISA</span>
             </div>
 
             <h1 className="font-['Playfair_Display',serif] text-[clamp(34px,5vw,54px)] font-bold text-[#0f0f1a] leading-[1.2] mb-4">
-              Dubai Free Zone
+              UAE Golden Visa
               <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d7193f] to-[#e8718a]">Company Formation Services</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d7193f] to-[#e8718a]">Services In Dubai</span>
             </h1>
 
             <p className="text-[15px] md:text-[16px] leading-relaxed text-gray-600 mb-8">
-              Establish your company in Dubai Free Zone with complete business setup support, investor-friendly regulations, 
-              and flexible corporate solutions. EzzyBiz helps entrepreneurs, startups, and global investors launch and expand 
-              their businesses across the UAE with smooth registration and compliance assistance.
+              Secure long-term residency in the UAE with professional Golden Visa assistance from EzzyBiz. 
+              We help investors, entrepreneurs, skilled professionals, business owners, and talented individuals 
+              navigate the UAE Golden Visa process with complete documentation and immigration support.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact" className="group flex items-center justify-center gap-2 bg-gradient-to-r from-[#d7193f] to-[#b81236] text-white px-7 py-3 rounded-lg text-sm font-semibold tracking-wide transition-all duration-300 hover:shadow-lg hover:shadow-[#d7193f]/30 hover:scale-105 no-underline">
-                Start Your Company <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                Apply For Golden Visa <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link to="/contact" className="flex items-center justify-center gap-2 border border-gray-300 bg-white text-gray-700 px-7 py-3 rounded-lg text-sm font-semibold tracking-wide transition-all duration-300 hover:border-[#d7193f] hover:text-[#d7193f] hover:shadow-md no-underline">
                 <MessageCircle size={14} /> Book Free Consultation
@@ -345,34 +327,65 @@ export default function DubaiFZ() {
           >
             <div className="inline-flex items-center gap-2 mb-4 justify-center">
               <div className="w-8 h-[2px] bg-[#d7193f]/40" />
-              <span className="text-[10px] font-semibold tracking-[2px] uppercase text-[#d7193f]">DUBAI FREE ZONE</span>
+              <span className="text-[10px] font-semibold tracking-[2px] uppercase text-[#d7193f]">GOLDEN VISA UAE</span>
               <div className="w-8 h-[2px] bg-[#d7193f]/40" />
             </div>
             <h2 className="font-['Playfair_Display',serif] text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a] mb-5">
-              What Is Dubai Free Zone Company Formation?
+              What Is The UAE Golden Visa?
             </h2>
             <div className="space-y-4 text-gray-600 text-[15px] leading-relaxed text-left">
               <p>
-                Dubai Free Zone company formation allows entrepreneurs and international investors to establish businesses 
-                in specialized economic zones designed to support global trade, innovation, and investment. Free zones provide 
-                simplified regulations, tax-friendly policies, and flexible setup options for businesses across multiple industries.
+                The UAE Golden Visa is a long-term residency program introduced to attract investors, entrepreneurs, 
+                skilled professionals, scientists, innovators, and talented individuals from around the world. The 
+                program provides eligible applicants with extended residency options in the UAE while supporting 
+                business growth and economic development.
               </p>
               <p>
-                Dubai is home to several world-class free zones offering modern infrastructure, international connectivity, 
-                and business-friendly environments for startups, SMEs, and multinational companies. Free zone companies benefit 
-                from efficient registration procedures and operational flexibility.
+                Golden Visa holders can live, work, study, and invest in the UAE while enjoying long-term residency 
+                benefits, business opportunities, and family sponsorship options. The visa is designed to support 
+                individuals who contribute to the UAE's innovation, investment, and professional sectors.
               </p>
               <p>
-                EzzyBiz provides complete support for Dubai free zone company setup including business activity selection, 
-                trade license registration, visa processing, office solutions, banking support, and corporate compliance services.
+                EzzyBiz provides complete Golden Visa assistance including eligibility assessment, documentation 
+                preparation, application processing, immigration coordination, Emirates ID support, and professional 
+                consultation throughout the process.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ========== BENEFITS SECTION ========== */}
+      {/* ========== ELIGIBILITY SECTION ========== */}
       <section className="py-16 md:py-20 bg-gradient-to-br from-[#fef8f9] to-white">
+        <div className="max-w-[1100px] mx-auto px-5 md:px-8">
+          <div
+            ref={eligibilityRef}
+            className={`transition-all duration-600 ${
+              eligibilityVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 mb-3 justify-center">
+                <div className="w-8 h-[2px] bg-[#d7193f]/40" />
+                <span className="text-[10px] font-semibold tracking-[2px] uppercase text-[#d7193f]">ELIGIBILITY CRITERIA</span>
+                <div className="w-8 h-[2px] bg-[#d7193f]/40" />
+              </div>
+              <h2 className="font-['Playfair_Display',serif] text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a]">
+                Who Can Apply For UAE Golden Visa?
+              </h2>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {ELIGIBILITY_CATEGORIES.map((category, idx) => (
+                <EligibilityCard key={idx} category={category} index={idx} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========== BENEFITS SECTION ========== */}
+      <section className="py-16 md:py-20 bg-white">
         <div className="max-w-[1100px] mx-auto px-5 md:px-8">
           <div
             ref={benefitsRef}
@@ -380,18 +393,18 @@ export default function DubaiFZ() {
               benefitsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            <div className="text-center mb-12">
+            <div className="text-center mb-10">
               <div className="inline-flex items-center gap-2 mb-3 justify-center">
                 <div className="w-8 h-[2px] bg-[#d7193f]/40" />
                 <span className="text-[10px] font-semibold tracking-[2px] uppercase text-[#d7193f]">KEY BENEFITS</span>
                 <div className="w-8 h-[2px] bg-[#d7193f]/40" />
               </div>
               <h2 className="font-['Playfair_Display',serif] text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a]">
-                Benefits Of Dubai Free Zone Company Formation
+                Benefits Of UAE Golden Visa
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
               {BENEFITS.map((benefit, idx) => (
                 <BenefitCard key={idx} benefit={benefit} index={idx} />
               ))}
@@ -400,66 +413,8 @@ export default function DubaiFZ() {
         </div>
       </section>
 
-      {/* ========== POPULAR FREE ZONES SECTION ========== */}
-      <section className="py-16 md:py-20 bg-white">
-        <div className="max-w-[1100px] mx-auto px-5 md:px-8">
-          <div
-            ref={freeZonesRef}
-            className={`transition-all duration-600 ${
-              freeZonesVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
-            <div className="text-center mb-10">
-              <div className="inline-flex items-center gap-2 mb-3 justify-center">
-                <div className="w-8 h-[2px] bg-[#d7193f]/40" />
-                <span className="text-[10px] font-semibold tracking-[2px] uppercase text-[#d7193f]">POPULAR FREE ZONES</span>
-                <div className="w-8 h-[2px] bg-[#d7193f]/40" />
-              </div>
-              <h2 className="font-['Playfair_Display',serif] text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a]">
-                Popular Dubai Free Zones
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-              {POPULAR_FREE_ZONES.map((freeZone, idx) => (
-                <FreeZoneCard key={idx} freeZone={freeZone} index={idx} />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ========== BUSINESS ACTIVITIES SECTION ========== */}
+      {/* ========== APPLICATION PROCESS SECTION ========== */}
       <section className="py-16 md:py-20 bg-gradient-to-br from-[#fef8f9] to-white">
-        <div className="max-w-[1100px] mx-auto px-5 md:px-8">
-          <div
-            ref={activitiesRef}
-            className={`transition-all duration-600 ${
-              activitiesVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
-            <div className="text-center mb-10">
-              <div className="inline-flex items-center gap-2 mb-3 justify-center">
-                <div className="w-8 h-[2px] bg-[#d7193f]/40" />
-                <span className="text-[10px] font-semibold tracking-[2px] uppercase text-[#d7193f]">BUSINESS ACTIVITIES</span>
-                <div className="w-8 h-[2px] bg-[#d7193f]/40" />
-              </div>
-              <h2 className="font-['Playfair_Display',serif] text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a]">
-                Popular Business Activities In Dubai Free Zone
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-              {BUSINESS_ACTIVITIES.map((activity, idx) => (
-                <ActivityCard key={idx} activity={activity} index={idx} />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ========== PROCESS SECTION ========== */}
-      <section className="py-16 md:py-20 bg-white">
         <div className="max-w-[1000px] mx-auto px-5 md:px-8">
           <div
             ref={processRef}
@@ -470,11 +425,11 @@ export default function DubaiFZ() {
             <div className="text-center mb-10">
               <div className="inline-flex items-center gap-2 mb-3 justify-center">
                 <div className="w-8 h-[2px] bg-[#d7193f]/40" />
-                <span className="text-[10px] font-semibold tracking-[2px] uppercase text-[#d7193f]">SETUP PROCESS</span>
+                <span className="text-[10px] font-semibold tracking-[2px] uppercase text-[#d7193f]">APPLICATION PROCESS</span>
                 <div className="w-8 h-[2px] bg-[#d7193f]/40" />
               </div>
               <h2 className="font-['Playfair_Display',serif] text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a]">
-                Dubai Free Zone Company Setup Process
+                UAE Golden Visa Application Process
               </h2>
             </div>
 
@@ -488,7 +443,7 @@ export default function DubaiFZ() {
       </section>
 
       {/* ========== WHY CHOOSE EZZYBIZ ========== */}
-      <section className="py-16 md:py-20 bg-gradient-to-br from-[#fef8f9] to-white">
+      <section className="py-16 md:py-20 bg-white">
         <div className="max-w-[1100px] mx-auto px-5 md:px-8">
           <div
             ref={whyRef}
@@ -503,7 +458,7 @@ export default function DubaiFZ() {
                 <div className="w-8 h-[2px] bg-[#d7193f]/40" />
               </div>
               <h2 className="font-['Playfair_Display',serif] text-[clamp(28px,3.5vw,38px)] font-bold text-[#0f0f1a]">
-                Why Choose EzzyBiz For Dubai Free Zone Setup
+                Why Choose EzzyBiz For Golden Visa Services
               </h2>
             </div>
 
@@ -511,7 +466,7 @@ export default function DubaiFZ() {
               {WHY_CHOOSE.map((item, idx) => (
                 <div
                   key={idx}
-                  className={`flex items-center gap-3 p-4 rounded-lg bg-white border border-gray-100 shadow-sm transition-all duration-300 hover:shadow-md hover:border-[#d7193f]/20 ${
+                  className={`flex items-center gap-3 p-4 rounded-lg bg-gray-50/50 border border-gray-100 transition-all duration-300 hover:bg-white hover:border-[#d7193f]/20 hover:shadow-sm ${
                     whyVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                   }`}
                   style={{ transitionDelay: `${idx * 60}ms` }}
@@ -526,7 +481,7 @@ export default function DubaiFZ() {
       </section>
 
       {/* ========== FAQ SECTION ========== */}
-      <section className="py-16 md:py-20 bg-white">
+      <section className="py-16 md:py-20 bg-gradient-to-br from-[#fef8f9] to-white">
         <div className="max-w-[900px] mx-auto px-5 md:px-8">
           <div
             ref={faqRef}
@@ -545,7 +500,7 @@ export default function DubaiFZ() {
               </h2>
             </div>
 
-            <div className="bg-gradient-to-br from-[#fef8f9] to-white rounded-2xl p-6 md:p-8 border border-gray-100 shadow-sm">
+            <div className="bg-white rounded-2xl p-6 md:p-8 border border-gray-100 shadow-sm">
               {FAQS.map((faq, idx) => (
                 <FAQItem key={idx} faq={faq} index={idx} />
               ))}
@@ -569,11 +524,11 @@ export default function DubaiFZ() {
 
             <div className="relative z-10 text-center">
               <h2 className="font-['Playfair_Display',serif] text-[clamp(24px,4vw,34px)] font-bold text-white mb-3">
-                Launch Your Dubai Free Zone Business Today
+                Secure Your UAE Golden Visa With Confidence
               </h2>
               <p className="text-white/70 text-sm mb-8 max-w-lg mx-auto">
-                Partner with EzzyBiz for smooth company formation, expert consultation, and reliable business 
-                setup solutions across Dubai free zones.
+                Partner with EzzyBiz for professional Golden Visa services, expert immigration support, and reliable 
+                long-term residency solutions in the UAE.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/contact" className="group flex items-center justify-center gap-2 bg-gradient-to-r from-[#d7193f] to-[#b81236] text-white px-7 py-3 rounded-lg text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-[#d7193f]/30 hover:scale-105 no-underline">

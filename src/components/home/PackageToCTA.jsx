@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { FaCheckCircle } from "react-icons/fa";
 import { MdOutlineWorkspacePremium, MdOutlineStorefront } from "react-icons/md";
 import { RiVipCrownLine } from "react-icons/ri";
@@ -133,9 +134,9 @@ function PackagesSection() {
                 ))}
               </ul>
               
-              <button className={`w-full py-3.5 rounded-xl font-['Inter',sans-serif] font-semibold text-sm transition-all duration-300 ${pkg.featured ? "bg-gradient-to-r from-[#d7193f] to-[#b81236] text-white shadow-[0_8px_20px_rgba(215,25,63,0.25)] hover:shadow-[0_12px_25px_rgba(215,25,63,0.4)] hover:-translate-y-1" : "bg-transparent border border-gray-200 text-[#0f0f1a] hover:bg-[#d7193f]/5 hover:border-[#d7193f]/30 hover:text-[#d7193f]"}`}>
+              <Link to="/contact" className={`w-full py-3.5 rounded-xl font-['Inter',sans-serif] font-semibold text-sm transition-all duration-300 flex items-center justify-center no-underline ${pkg.featured ? "bg-gradient-to-r from-[#d7193f] to-[#b81236] text-white shadow-[0_8px_20px_rgba(215,25,63,0.25)] hover:shadow-[0_12px_25px_rgba(215,25,63,0.4)] hover:-translate-y-1" : "bg-transparent border border-gray-200 text-[#0f0f1a] hover:bg-[#d7193f]/5 hover:border-[#d7193f]/30 hover:text-[#d7193f]"}`}>
                 {pkg.cta} &rarr;
-              </button>
+              </Link>
             </div>
           ))}
         </div>
@@ -285,12 +286,12 @@ function FinalCTASection() {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-            <button className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-[#d7193f] to-[#b81236] text-white font-['Inter',sans-serif] font-bold text-[15px] flex items-center justify-center gap-3 shadow-[0_10px_30px_rgba(215,25,63,0.3)] hover:shadow-[0_15px_40px_rgba(215,25,63,0.45)] hover:-translate-y-1 transition-all duration-300">
+            <Link to="/contact" className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-[#d7193f] to-[#b81236] text-white font-['Inter',sans-serif] font-bold text-[15px] flex items-center justify-center gap-3 shadow-[0_10px_30px_rgba(215,25,63,0.3)] hover:shadow-[0_15px_40px_rgba(215,25,63,0.45)] hover:-translate-y-1 transition-all duration-300 no-underline">
               <FaRocket /> Get Free Consultation
-            </button>
-            <button className="w-full sm:w-auto px-8 py-4 rounded-xl bg-white border border-gray-200 text-[#0f0f1a] font-['Inter',sans-serif] font-semibold text-[15px] flex items-center justify-center gap-3 hover:bg-[#d7193f]/5 hover:border-[#d7193f]/30 hover:text-[#d7193f] transition-all duration-300">
+            </Link>
+            <a href="tel:+971527069469" className="w-full sm:w-auto px-8 py-4 rounded-xl bg-white border border-gray-200 text-[#0f0f1a] font-['Inter',sans-serif] font-semibold text-[15px] flex items-center justify-center gap-3 hover:bg-[#d7193f]/5 hover:border-[#d7193f]/30 hover:text-[#d7193f] transition-all duration-300 no-underline cursor-pointer">
               <FaHandshake /> Talk To Our Experts
-            </button>
+            </a>
           </div>
           
           <p className="font-['Inter',sans-serif] text-[12.5px] text-gray-500 tracking-wide">Trusted by startups, entrepreneurs, and global investors across the UAE.</p>

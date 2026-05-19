@@ -10,4 +10,10 @@
   body {
     font-family: var(--font-sans);
   }
+  button,
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"] {
+    cursor: pointer;
+  }
 }

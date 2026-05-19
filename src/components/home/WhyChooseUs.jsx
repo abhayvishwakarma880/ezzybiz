@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import {
   LuShieldCheck as ShieldCheck,
   LuZap as Zap,
@@ -319,13 +320,13 @@ export default function WhyChooseUs() {
                   </p>
 
                   {/* CTA Button */}
-                  <a
-                    href="#"
+                  <Link
+                    to="/contact"
                     className="inline-flex items-center gap-[10px] h-[52px] px-7 bg-[#d7193f] text-white font-bold text-[13px] tracking-[0.07em] uppercase rounded-sm no-underline transition-all duration-300 hover:-translate-y-[2px] hover:bg-[#b8162f] hover:shadow-[0_10px_32px_rgba(215,25,63,0.38)]"
                   >
                     <MessageCircle size={15} />
                     Book Free Consultation
-                  </a>
+                  </Link>
                 </div>
               </div>
 

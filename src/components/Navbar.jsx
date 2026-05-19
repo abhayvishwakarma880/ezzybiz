@@ -12,21 +12,21 @@ const NAV_ITEMS = [
       { label: "Dubai Mainland", href: "/dubaimainland" },
       { label: "Dubai Free Zone", href: "/dubaifreezone" },
       { label: "Sharjah Free Zone", href: "/sharjahfreezone" },
-      { label: "Ajman Free Zone", href: "#" },
-      { label: "RAK Free Zone", href: "#" },
+      { label: "Ajman Free Zone", href: "/ajmanfreezone" },
+      { label: "RAK Free Zone", href: "/rakfreezone" },
     ],
   },
   {
     label: "Visa Services",
     dropdown: [
-      { label: "All visa service", href: "#" },
-      { label: "Golden visa", href: "#" },
-      { label: "ejar", href: "#" },
+      { label: "All visa service", href: "/allvisa" },
+      { label: "Golden visa", href: "/goldenvisa" },
+      { label: "ejar", href: "/ejari" },
     ],
   },
-  { label: "VAT Services", href: "#" },
-  { label: "Banking", href: "#" },
-  { label: "Contact Us", href: "#" },
+  { label: "VAT Services", href: "/vat" },
+  { label: "Banking", href: "/banking" },
+  { label: "Contact Us", href: "/contact" },
 ];
 
 const ClockIcon = () => <FiClock size={14} />;
@@ -242,13 +242,13 @@ export default function Navbar() {
             </div>
 
             {/* CTA Button */}
-            <Link
-              to="#"
-              className="hidden lg:inline-flex items-center gap-[7px] bg-[#C8102E] text-white px-[22px] py-[11px] rounded font-bold text-[13px] tracking-[0.06em] no-underline uppercase shadow-[0_4px_16px_rgba(200,16,46,0.25)] transition-all duration-[220ms] ease-in-out hover:bg-[#a50d23] hover:shadow-[0_6px_24px_rgba(200,16,46,0.35)] hover:-translate-y-px whitespace-nowrap shrink-0" 
+            <a
+              href="tel:+971527069469"
+              className="hidden lg:inline-flex items-center gap-[7px] bg-[#C8102E] text-white px-[22px] py-[11px] rounded font-bold text-[13px] tracking-[0.06em] no-underline uppercase shadow-[0_4px_16px_rgba(200,16,46,0.25)] transition-all duration-[220ms] ease-in-out hover:bg-[#a50d23] hover:shadow-[0_6px_24px_rgba(200,16,46,0.35)] hover:-translate-y-px whitespace-nowrap shrink-0 cursor-pointer" 
             >
               <FiMessageSquare size={14} strokeWidth={2.5} />
               Talk To Expert
-            </Link>
+            </a>
 
             {/* Mobile Hamburger */}
             <button
@@ -278,7 +278,17 @@ export default function Navbar() {
                         : null
                     }
                   >
-                    <Link to={item.href || "#"} className="no-underline text-inherit">
+                    <Link
+                      to={item.href || "#"}
+                      className="no-underline text-inherit"
+                      onClick={(e) => {
+                        if (item.dropdown) {
+                          e.preventDefault();
+                        } else {
+                          setMobileOpen(false);
+                        }
+                      }}
+                    >
                       {item.label}
                     </Link>
                     {item.dropdown && (
@@ -305,6 +315,7 @@ export default function Navbar() {
                             key={si}
                             to={sub.href || "#"}
                             className="flex items-center gap-[10px] px-9 py-[10px] text-[13px] text-[#444] no-underline"
+                            onClick={() => setMobileOpen(false)}
                           >
                             <span className="w-1 h-1 rounded-full bg-[#C8102E] shrink-0" />
                             {sub.label}
@@ -318,8 +329,9 @@ export default function Navbar() {
 
               <div className="px-6 py-4">
                 <Link
-                  to="#"
+                  to="/contact"
                   className="block text-center bg-[#C8102E] text-white py-[13px] rounded font-bold text-[13px] tracking-[0.06em] no-underline uppercase"
+                  onClick={() => setMobileOpen(false)}
                 >
                   Get Free Consultation
                 </Link>

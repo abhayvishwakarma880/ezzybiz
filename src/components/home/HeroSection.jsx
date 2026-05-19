@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function HeroSection() {
   const videoRef = useRef(null);
@@ -198,16 +199,18 @@ export default function HeroSection() {
 
             {/* Buttons */}
             <div className="hero-btns flex flex-wrap gap-4">
-              <button
-                className="btn-primary flex items-center gap-[10px] h-[58px] px-8 bg-[#d7193f] text-white font-bold text-[14px] tracking-[0.07em] uppercase rounded-sm cursor-pointer border-none"
+              <Link
+                to="/contact"
+                className="btn-primary flex items-center justify-center gap-[10px] h-[58px] px-8 bg-[#d7193f] text-white font-bold text-[14px] tracking-[0.07em] uppercase rounded-sm cursor-pointer border-none no-underline"
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
                 </svg>
                 Get Free Consultation
-              </button>
+              </Link>
 
-              <button
+              <Link
+                to="/vat"
                 className="btn-outline flex items-center gap-[10px] h-[58px] px-8 bg-transparent text-white font-semibold text-[14px] tracking-[0.07em] uppercase rounded-sm cursor-pointer"
                 style={{ border: "1px solid rgba(255,255,255,0.28)" }}
               >
@@ -215,7 +218,7 @@ export default function HeroSection() {
                   <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
                 </svg>
                 Explore Services
-              </button>
+              </Link>
             </div>
 
           </div>
