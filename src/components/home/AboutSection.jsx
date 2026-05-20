@@ -86,7 +86,7 @@ export default function AboutSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative bg-gradient-to-br from-[#fef8f9] via-white to-[#fff5f6] py-20 md:py-28 overflow-hidden font-['Inter',sans-serif]">
+    <section ref={sectionRef} className="relative bg-gradient-to-br from-[#fef8f9] via-white to-[#fff5f6] py-10 md:py-28 overflow-hidden font-['Inter',sans-serif]">
       {/* Background Decorations */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-[10%] w-[300px] h-[300px] bg-[#d7193f]/5 rounded-full blur-3xl animate-pulse" />
@@ -98,9 +98,9 @@ export default function AboutSection() {
       <div className="max-w-[1280px] mx-auto px-5 md:px-10 relative z-10">
         {/* Main Grid */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-          
+            
           {/* LEFT COLUMN */}
-          <div className="relative">
+          <div className="relative order-2 lg:order-1">
             <div
               className="relative rounded-3xl overflow-hidden aspect-[4/5] shadow-2xl"
               style={{
@@ -246,48 +246,6 @@ export default function AboutSection() {
             </div> */}
           </div>
         </div>
-
-        {/* Bottom CTA Strip */}
-        {/* <div
-          className={`mt-20 md:mt-28 bg-gradient-to-r from-[#0f0f1a] to-[#1a1a2e] rounded-2xl p-8 md:p-12 relative overflow-hidden transition-all duration-700 ${
-            sectionInView ? "opacity-100 scale-100" : "opacity-0 scale-95"
-          }`}
-          style={{ transitionDelay: "0.75s" }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-[#d7193f]/10 to-transparent" />
-          <div className="absolute top-0 right-0 w-48 h-48 bg-[#d7193f]/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#e8718a]/10 rounded-full blur-3xl" />
-          
-          <div className="absolute top-0 left-1/4 w-32 h-px bg-gradient-to-r from-transparent via-[#d7193f]/30 to-transparent" />
-          
-          <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
-            <div className="text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 mb-4">
-                <div className="w-6 h-px bg-[#d7193f]" />
-                <span className="text-[10px] font-semibold tracking-[0.2em] uppercase text-[#d7193f]">Get Started Today</span>
-              </div>
-              <h3 className="font-sans text-[clamp(24px,3vw,34px)] font-bold text-white leading-[1.2] mb-3">
-                Build Your Business In Dubai
-                <br className="hidden sm:block" />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d7193f] to-[#e8718a]"> With Confidence</span>
-              </h3>
-              <p className="text-gray-400 text-sm max-w-lg">
-                Partner with EzzyBiz and experience seamless company formation, corporate services, 
-                and business growth solutions tailored for the UAE market.
-              </p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-3 shrink-0">
-              <button className="group flex items-center justify-center gap-2 bg-gradient-to-r from-[#d7193f] to-[#b81236] text-white px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-[#d7193f]/30 hover:scale-105">
-                <RiBuildingLine size={16} />
-                Start Your Company
-              </button>
-              <button className="flex items-center justify-center gap-2 border border-white/20 text-white/80 px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-300 hover:bg-white/10 hover:border-[#d7193f]/50 hover:text-[#d7193f]">
-                <FaHandshake size={14} />
-                Talk To Our Experts
-              </button>
-            </div>
-          </div>
-        </div> */}
       </div>
     </section>
   );

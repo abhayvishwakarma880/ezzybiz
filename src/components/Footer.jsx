@@ -86,10 +86,8 @@ export default function Footer() {
           {/* ── COL 1: Brand ── */}
           <div>
             <Link to="/" className="flex items-center gap-3 mb-5 no-underline group select-none">
-              <div className="w-11 h-11 bg-gradient-to-br from-red-600 to-red-900 rounded-[12px] flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-105">
-                <BuildingIcon size={22} />
-              </div>
-              <span className="font-['Cormorant_Garamond'] text-[27px] font-bold text-white transition-colors duration-300 group-hover:text-red-500">
+              <img src="/logoIcon.png" alt="EzzyBiz Logo" className="h-11 w-auto object-contain flex-shrink-0 transition-transform duration-300 group-hover:scale-105" />
+              <span className="font-serif text-[27px] font-bold text-white transition-colors duration-300 group-hover:text-red-500">
                 EzzyBiz
               </span>
             </Link>
@@ -145,7 +143,7 @@ export default function Footer() {
                   <IoLocationOutline className="text-red-500 text-[15px]" />
                 </div>
                 <span className="text-white/40 text-[13px] leading-relaxed pt-1">
-                  Office 210, Business Bay,<br />Dubai, United Arab Emirates
+                  1603 The Citadel Tower,<br />Business Bay, Dubai
                 </span>
               </div>
 
@@ -154,9 +152,9 @@ export default function Footer() {
                 <div className="w-[34px] h-[34px] flex-shrink-0 border border-white/[0.08] rounded-[9px] flex items-center justify-center mt-0.5">
                   <MdOutlinePhone className="text-red-500 text-[15px]" />
                 </div>
-                <a href="tel:+971527069469"
+                <a href="tel:+971523177073"
                   className="text-white/40 text-[13px] pt-1 hover:text-white transition-colors duration-300">
-                  +971 52 706 9469
+                  +971 52 317 7073
                 </a>
               </div>
 

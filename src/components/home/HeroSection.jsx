@@ -1,8 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { FaWhatsapp } from "react-icons/fa6";
+import { HiOutlineChatBubbleLeftRight } from "react-icons/hi2";
 import { Link } from "react-router-dom";
 
 export default function HeroSection() {
-  const videoRef = useRef(null);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -12,7 +13,7 @@ export default function HeroSection() {
 
   return (
     <>
-      <style>{`
+      {/* <style>{`
         @keyframes kenBurns {
           0%   { transform: scale(1.08); }
           100% { transform: scale(1); }
@@ -30,7 +31,7 @@ export default function HeroSection() {
           to   { width: 56px; }
         }
 
-        .hero-video {
+        .hero-img {
           animation: kenBurns 8s ease-out forwards;
         }
         .hero-badge   { animation: fadeUp 0.7s ease forwards 0.3s; opacity: 0; }
@@ -84,38 +85,14 @@ export default function HeroSection() {
         .stat-item:nth-child(1) { animation-delay: 1.6s; }
         .stat-item:nth-child(2) { animation-delay: 1.75s; }
         .stat-item:nth-child(3) { animation-delay: 1.9s; }
-      `}</style>
+      `}</style> */}
 
-      <section className="relative h-[calc(100vh-112px)] w-full overflow-hidden flex flex-col justify-center font-sans pt-8 md:pt-12 pb-6 md:pb-10">
-        {/* ── BACKGROUND VIDEO ── */}
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="hero-video absolute inset-0 w-full h-full object-cover z-[-2]"
-        >
-          <source src="/dubai.mp4" type="video/mp4" />
-          {/* Fallback poster */}
-        </video>
-
-        {/* ── DARK OVERLAY (cinematic gradient) ── */}
-        <div
-          className="absolute inset-0 z-[-1]"
-          style={{
-            background:
-              "linear-gradient(to right, rgba(0,0,0,0.86) 0%, rgba(0,0,0,0.55) 40%, rgba(0,0,0,0.28) 60%)",
-          }}
-        />
-
-        {/* Subtle noise texture overlay */}
-        <div
-          className="absolute inset-0 z-[-1] opacity-[0.03]"
-          style={{
-            backgroundImage:
-              "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E\")",
-          }}
+      <section className="relative h-56 md:h-[calc(100vh-112px)] w-full overflow-hidden flex flex-col justify-end md:justify-center font-sans pt-8 md:pt-12 pb-6 md:pb-10">
+        {/* ── BACKGROUND IMAGE ── */}
+        <img
+          src="/baner.png"
+          alt="Hero Banner"
+          className="hero-img absolute inset-0 w-full h-full object-cover md:object-fill object-center z-[-2]"
         />
 
         {/* Bottom fade */}
@@ -128,17 +105,17 @@ export default function HeroSection() {
         />
 
         {/* ── HERO CONTENT ── */}
-        <div className="relative z-10 w-full max-w-[1280px] mx-auto px-8 md:px-16 mt-2 md:mt-0">
-          <div className="max-w-[680px]">
+        <div className="relative z-10 h-18 md:h-24 md:w-full max-w-7xl md:mx-auto px-2 sm:px-6 md:px-16 mt-10 md:-mt-20">
+          <div className="max-w-[200px] md:max-w-170 -mt-25 md:-mt-35">
             {/* Badge */}
-            {/* <div className="hero-badge flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-3 mb-0">
               <span
-                className="text-[#d7193f] text-[12px] font-bold tracking-[3px] uppercase"
+                className="text-[#d7193f] text-[6px] md:text-[12px] font-bold tracking-[3px] uppercase"
               >
-                Dubai Corporate Business Solutions
+                your trusted partner for
               </span>
-            </div> */}
-
+            </div>
+          
             {/* Red divider line */}
             {/* <div
               className="hero-divider h-[3px] bg-[#d7193f] mb-7 rounded-full"
@@ -146,123 +123,58 @@ export default function HeroSection() {
 
             {/* Main Heading */}
             <h1
-              className="hero-h1 text-white font-bold leading-[1.1] mb-6 font-serif"
+              className="text-white font-bold  leading-[1] md:leading-[1.1] mb-2 font-serif"
               style={{
-                fontSize: "clamp(42px, 6vw, 76px)",
+                // fontSize: "clamp(34px, 9vw, 76px)",
+                fontSize: "clamp(14px, 6vw, 76px)",
               }}
             >
-              Start Your Business
+              Business Setup
               <br />
               <span
                 className=""
                 style={{ color: "rgba(255,255,255,0.92)" }}
               >
-                <span className="text-red-500">Journey</span> In Dubai
+                In <span className="text-[#D60922]">Dubai</span>
               </span>
             </h1>
+            {/* Red divider line */}
+            <div
+              className="hero-divider h-[3px] bg-[#D60922] -mt-2 mb-2 w-10 md:w-28 rounded-full"
+            />
 
             {/* Paragraph */}
             <p
-              className="hero-p text-[18px] leading-[1.8] mb-9"
+              className="hero-p text-[8px] md:text-[18px] leading-[1.5] md:leading-[1.8] mb-2"
               style={{ color: "rgba(255,255,255,0.78)" }}
             >
-              Business setup, company formation, VAT, compliance and corporate
-              services for entrepreneurs and global investors.
+              Company Setup, Mainland & Free Zone, Visa Services, <br /> VAT, Ejari & Banking Assistance - <br />
+              <span className="text-[#D60922]">All Corporate Services Under One Roof.</span> 
             </p>
 
-            {/* ── STATS BAR ── */}
-            <div className="flex flex-wrap items-center gap-8 md:gap-12 mb-9">
-              {[
-                { number: "1500+", label: "Companies Formed" },
-                { number: "12+", label: "Years Experience" },
-                { number: "98%", label: "Client Satisfaction" },
-              ].map(({ number, label }) => (
-                <div key={label} className="stat-item flex flex-col">
-                  <span
-                    className="text-white font-bold leading-none mb-1 font-serif"
-                    style={{
-                      fontSize: "clamp(26px, 3vw, 38px)",
-                    }}
-                  >
-                    {number}
-                  </span>
-                  <span
-                    className="text-[12px] tracking-[1.5px] uppercase font-semibold"
-                    style={{ color: "rgba(255,255,255,0.5)" }}
-                  >
-                    {label}
-                  </span>
-                </div>
-              ))}
-            </div>
-
             {/* Buttons */}
-            <div className="hero-btns flex flex-wrap gap-4">
+            <div className="flex sm:flex-row gap-2 md:gap-4 sm:full sm:w-auto">
               <Link
                 to="/contact"
-                className="btn-primary flex items-center justify-center gap-[10px] h-[58px] px-8 bg-[#d7193f] text-white font-bold text-[14px] tracking-[0.07em] uppercase rounded-sm cursor-pointer border-none no-underline"
+                className="btn-primary flex items-center justify-center gap-[5px] h-[20px] md:h-[58px] px-2 md:px-8 bg-[#D60922] text-white font-bold text-[5px] md:text-[15px] tracking-[0.07em] uppercase rounded-sm cursor-pointer border-none no-underline"
               >
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                </svg>
+                <HiOutlineChatBubbleLeftRight className="text-[7px] md:text-xl" />
                 Get Free Consultation
               </Link>
 
               <Link
                 to="/vat"
-                className="btn-outline flex items-center gap-[10px] h-[58px] px-8 bg-transparent text-white font-semibold text-[14px] tracking-[0.07em] uppercase rounded-sm cursor-pointer"
-                style={{ border: "1px solid rgba(255,255,255,0.28)" }}
+                className="btn-outline flex items-center gap-[5px] h-[20px] md:h-[58px] px-2   md:px-8 bg-black text-white font-semibold text-[5px] md:text-[15px] tracking-[0.07em] uppercase rounded-sm cursor-pointer border-1 border-white"
+                // style={{ border: "1px solid rgba(255,255,255,0.9)" }}
               >
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <circle cx="11" cy="11" r="8" />
-                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                </svg>
-                Explore Services
+                < FaWhatsapp className="h-5" />
+                WhatsApp Now
               </Link>
             </div>
           </div>
         </div>
 
-        {/* ── SCROLL INDICATOR ── */}
-        <div className="hero-scroll absolute right-8 bottom-10 z-10 flex flex-col items-center gap-2">
-          <span
-            className="text-[10px] tracking-[2.5px] uppercase font-semibold"
-            style={{
-              color: "rgba(255,255,255,0.4)",
-              writingMode: "vertical-rl",
-              textOrientation: "mixed",
-            }}
-          >
-            Scroll
-          </span>
-          <div
-            className="w-[1px] h-12 relative overflow-hidden"
-            style={{ background: "rgba(255,255,255,0.15)" }}
-          >
-            <div
-              className="scroll-dot absolute top-0 left-0 w-full bg-[#d7193f]"
-              style={{ height: "40%" }}
-            />
-          </div>
-        </div>
+        
       </section>
     </>
   );

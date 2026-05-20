@@ -5,6 +5,9 @@ import WhyChooseUs from '../components/home/WhyChooseUs.jsx'
 import BusinessSetupProcess from '../components/home/BusinessSetupProcess.jsx'
 import AboutSection from '../components/home/AboutSection.jsx'
 import PackageToCTA from '../components/home/PackageToCTA.jsx'
+import Projects from '../components/home/Projects.jsx'
+import Clientele from '../components/home/Clientele.jsx'
+import Articles from '../components/home/Articles.jsx'
 
 const Home = () => {
   return (
@@ -15,6 +18,9 @@ const Home = () => {
       <WhyChooseUs />
       <BusinessSetupProcess />
       <PackageToCTA />
+      <Projects />
+      <Clientele />
+      <Articles />
     </div>
   )
 }

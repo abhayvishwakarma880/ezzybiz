@@ -183,6 +183,11 @@ const faqs = [
     q: "Does EzzyBiz help with visas and bank accounts?",
     a: "Yes, we provide complete support for investor visas, employee visas, Emirates ID processing, and business banking assistance.",
   },
+
+  {
+    q: "Which is better: Mainland or Free Zone?",
+    a: "The right option depends on your business goals, target market, visa requirements, and operational needs. Our consultants help you choose the best structure.",
+  },
 ];
 
 /* ─── Shared Badge ─── */
@@ -536,7 +541,7 @@ function FAQSection() {
       className="py-20 md:py-24 bg-[#1a1a2e] relative overflow-hidden"
       ref={ref}
     >
-      <div className="max-w-[800px] mx-auto px-6 md:px-10 relative z-10">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-10 relative z-10">
         <div
           className={`text-center mb-16 transition-all duration-[700ms] ease-out will-change-transform ${inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
@@ -547,7 +552,7 @@ function FAQSection() {
           </h2>
         </div>
 
-        <div className="flex flex-col gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {faqs.map((faq, i) => (
             <div
               key={i}

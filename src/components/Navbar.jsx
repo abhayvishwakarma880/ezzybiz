@@ -133,7 +133,7 @@ export default function Navbar() {
 
             {/* Phone Numbers */}
             <div className="hidden md:flex items-center gap-5">
-              {["+971 52 706 9469", "+971 4 569 9557"].map((num, i) => (
+              {["+971 52 317 7073"].map((num, i) => (
                 <a
                   key={i}
                   href={`tel:${num.replace(/\s/g, "")}`}
@@ -193,7 +193,8 @@ export default function Navbar() {
           <div className="max-w-[1280px] mx-auto px-6 flex items-center justify-between h-[72px]">
 
             {/* Logo */}
-            <Link to="/" className="no-underline flex flex-col leading-[1.1]">
+            <Link to="/" className="no-underline flex items-center gap-2 leading-[1.1]">
+              <img src="/logoIcon.png" alt="EzzyBiz Logo" className="h-10 w-auto object-contain" />
               <div className="flex items-baseline gap-0.5">
                 <span
                   className="font-bold text-[28px] text-[#0f0f1a] tracking-[-0.5px] font-serif"
