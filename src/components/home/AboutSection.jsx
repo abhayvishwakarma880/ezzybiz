@@ -169,7 +169,7 @@ export default function AboutSection() {
               className={`text-[15px] text-gray-600 leading-relaxed mb-6 transition-all duration-700 ${
                 sectionInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               }`}
-              style={{ transitionDelay: "0.3s" }}
+              style={{ transitionDelay: "0.3s", fontFamily: "'Mont', sans-serif", fontWeight: 800 }}
             >
               EzzyBiz is a professional corporate consultancy firm helping entrepreneurs, startups, and international 
               investors establish and grow their businesses across the UAE. With deep industry knowledge and a 

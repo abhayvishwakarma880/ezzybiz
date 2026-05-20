@@ -87,7 +87,8 @@ export default function HeroSection() {
         .stat-item:nth-child(3) { animation-delay: 1.9s; }
       `}</style> */}
 
-      <section className="relative h-56 md:h-[calc(100vh-112px)] w-full overflow-hidden flex flex-col justify-end md:justify-center font-sans pt-8 md:pt-12 pb-6 md:pb-10">
+      {/* <section className="relative h-56 md:h-[calc(100vh-112px)] w-full overflow-hidden flex flex-col justify-end md:justify-center font-sans pt-8 md:pt-12 pb-6 md:pb-10"> */}
+      <section className="relative h-56 md:h-screen w-full overflow-hidden flex flex-col justify-end md:justify-center font-sans pt-8 md:pt-12 pb-6 md:pb-10">
         {/* ── BACKGROUND IMAGE ── */}
         <img
           src="/baner.png"

@@ -669,7 +669,7 @@ export default function PackageToCTA() {
   return (
     <>
       {/* <PackagesSection /> */}
-      <IndustriesSection />
+      {/* <IndustriesSection /> */}
       <TestimonialsSection />
       <FAQSection />
       <FinalCTASection />

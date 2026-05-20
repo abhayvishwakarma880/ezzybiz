@@ -123,16 +123,10 @@ export default function Navbar() {
 
       {/* ── TOP BAR ── */}
       <div className="bg-[#0f0f1a] border-b border-[#C8102E]/25 font-sans relative z-[1001]">
-          <div className="max-w-[1280px] mx-auto px-4 lg:px-6 flex items-center justify-center md:justify-between h-10 gap-3">
-
-            {/* Business Hours */}
-            <div className="hidden lg:flex items-center gap-[7px] text-[#b0b8cc] text-[12.5px] tracking-[0.03em] shrink-0">
-              <span className="text-[#C8102E]"><ClockIcon /></span>
-              <span>Mon – Sat &nbsp;|&nbsp; 9:00 AM – 6:30 PM</span>
-            </div>
+          <div className="max-w-[1280px] mx-auto px-4 lg:px-6 flex items-center justify-between md:justify-between h-10 gap-3">
 
             {/* Phone Numbers */}
-            <div className="hidden md:flex items-center gap-5">
+            <div className="md:flex items-center gap-5">
               {["+971 52 317 7073"].map((num, i) => (
                 <a
                   key={i}
@@ -143,20 +137,30 @@ export default function Navbar() {
                   {num}
                 </a>
               ))}
-            </div>
-
-            {/* Email + Socials */}
-            <div className="flex items-center justify-between w-full md:w-auto md:justify-end gap-[18px] shrink-0">
+              {/* Divider */}
+              <div className="w-px h-4 bg-white/10 hidden sm:block" />
               <a
                 href="mailto:info@ezzybiz.ae"
-                className="flex items-center gap-[6px] text-[#d0d8e8] text-[12.5px] no-underline transition-colors duration-200 hover:text-[#f8a0b0]"
+                className="md:flex hidden items-center gap-[6px] text-[#d0d8e8] text-[12.5px] no-underline transition-colors duration-200 hover:text-[#f8a0b0]"
               >
                 <span className="text-[#C8102E]"><MailIcon /></span>
                 info@ezzybiz.ae
               </a>
+            </div>
 
-              {/* Divider */}
-              <div className="w-px h-4 bg-white/10 hidden sm:block" />
+            {/* Business Hours */}
+            <div className="hidden lg:flex items-center gap-[7px] text-[#b0b8cc] text-[12.5px] tracking-[0.03em] shrink-0">
+              <span className="text-[#C8102E]"><ClockIcon /></span>
+              <span>Mon – Sat &nbsp;|&nbsp; 9:00 AM – 6:30 PM</span>
+            </div>
+
+            
+
+            {/* Email + Socials */}
+            <div className="flex border items-center justify-between md:w-auto md:justify-end gap-[18px] shrink-0">
+              
+
+              
 
               {/* Social Icons */}
               <div className="flex items-center gap-[15px] sm:gap-[10px]">
